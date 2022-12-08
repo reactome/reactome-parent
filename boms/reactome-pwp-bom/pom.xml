@@ -1,0 +1,199 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>org.reactome</groupId>
+        <artifactId>bom-parent</artifactId>
+        <version>1.0.0</version>
+    </parent>
+
+    <groupId>org.reactome.web.pwp</groupId>
+    <artifactId>reactome-pwp-bom</artifactId>
+
+    <packaging>pom</packaging>
+    <version>1.0.0</version>
+    <name>Reactome PWP BOM</name>
+
+    <description>
+        Reactome PWP BOM aims to centralise dependencies management for Pathway Portal
+    </description>
+    <url>https://github.com/reactome/reactome-parent</url>
+    <organization>
+        <name>The European Bioinformatics Institute</name>
+        <url>http://www.ebi.ac.uk/</url>
+    </organization>
+
+    <developers>
+        <developer>
+            <id>eragueneau</id>
+            <name>Eliot Ragueneau</name>
+            <email>eragueneau@ebi.ac.uk</email>
+        </developer>
+    </developers>
+
+    <properties>
+        <pwp.scroller.version>1.1.0</pwp.scroller.version>
+        <pwp.carrousel.version>1.1.3</pwp.carrousel.version>
+
+        <pwp.model.version>2.2.0</pwp.model.version>
+        <pwp.analysis-client.version>2.0.0</pwp.analysis-client.version>
+        <pwp.diagram.version>4.1.1-SNAPSHOT</pwp.diagram.version>
+        <pwp.fireworks.version>2.0.0</pwp.fireworks.version>
+
+        <pwp.chebi.version>1.2.1</pwp.chebi.version>
+        <pwp.gxa.version>3.1.0</pwp.gxa.version>
+        <pwp.analytics.version>2.1.0</pwp.analytics.version>
+        <pwp.pdb.version>2.3.2</pwp.pdb.version>
+        <pwp.rhea.version>1.3.2</pwp.rhea.version>
+
+        <pwp.browser.version>3.9.0-SNAPSHOT</pwp.browser.version>
+    </properties>
+    <dependencyManagement>
+        <dependencies>
+            <!--      ABSTRACT UI      -->
+            <dependency>
+                <groupId>org.reactome.web</groupId>
+                <artifactId>carrousel</artifactId>
+                <version>${pwp.carrousel.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.reactome.web</groupId>
+                <artifactId>scroller</artifactId>
+                <version>${pwp.scroller.version}</version>
+            </dependency>
+
+            <!--      REACTOME SPECIFIC      -->
+
+            <dependency>
+                <groupId>org.reactome.web.pwp</groupId>
+                <artifactId>model</artifactId>
+                <version>${pwp.model.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.reactome.web.pwp</groupId>
+                <artifactId>analysis-client</artifactId>
+                <version>${pwp.analysis-client.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.reactome.web</groupId>
+                <artifactId>fireworks</artifactId>
+                <version>${pwp.fireworks.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.reactome.web</groupId>
+                <artifactId>fireworks-js</artifactId>
+                <version>${pwp.fireworks.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.reactome.web</groupId>
+                <artifactId>diagram</artifactId>
+                <version>${pwp.diagram.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.reactome.web</groupId>
+                <artifactId>diagram-js</artifactId>
+                <version>${pwp.diagram.version}</version>
+            </dependency>
+
+            <!--      WIDGETS      -->
+
+            <dependency>
+                <groupId>uk.ac.ebi.pwp.widgets</groupId>
+                <artifactId>chebi</artifactId>
+                <version>${pwp.chebi.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>uk.ac.ebi.pwp.widgets</groupId>
+                <artifactId>gxa</artifactId>
+                <version>${pwp.gxa.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.reactome.web.utils</groupId>
+                <artifactId>analytics</artifactId>
+                <version>${pwp.analytics.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>uk.ac.ebi.pwp.widgets</groupId>
+                <artifactId>pdb</artifactId>
+                <version>${pwp.pdb.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>uk.ac.ebi.pwp.widgets</groupId>
+                <artifactId>rhea</artifactId>
+                <version>${pwp.rhea.version}</version>
+            </dependency>
+
+            <!--      PATHWAY BROWSER      -->
+            <dependency>
+                <groupId>org.reactome.web.pwp</groupId>
+                <artifactId>browser</artifactId>
+                <version>${pwp.browser.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+
+    <repositories>
+        <!-- EBI repo -->
+        <repository>
+            <id>nexus-ebi-repo</id>
+            <name>The EBI internal repository</name>
+            <url>https://www.ebi.ac.uk/Tools/maven/repos/content/groups/ebi-repo/</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+        <!-- EBI SNAPSHOT repo -->
+        <repository>
+            <id>nexus-ebi-snapshot-repo</id>
+            <name>The EBI internal snapshot repository</name>
+            <url>https://www.ebi.ac.uk/Tools/maven/repos/content/groups/ebi-snapshots/</url>
+            <releases>
+                <enabled>false</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+        <repository>
+            <id>spring-snapshot</id>
+            <name>Spring Snapshot Repository</name>
+            <url>https://repo.spring.io/snapshot</url>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
+
+    <distributionManagement>
+        <!-- EBI repo -->
+        <repository>
+            <id>pst-release</id>
+            <name>EBI Nexus Repository</name>
+            <url>https://www.ebi.ac.uk/Tools/maven/repos/content/repositories/pst-release</url>
+        </repository>
+        <!-- EBI SNAPSHOT repo -->
+        <snapshotRepository>
+            <uniqueVersion>false</uniqueVersion>
+            <id>pst-snapshots</id>
+            <name>EBI Nexus Snapshots Repository</name>
+            <url>https://www.ebi.ac.uk/Tools/maven/repos/content/repositories/pst-snapshots</url>
+        </snapshotRepository>
+    </distributionManagement>
+
+
+</project>
