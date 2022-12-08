@@ -42,6 +42,19 @@
         <reactome.reactome-bom.version>1.0.0</reactome.reactome-bom.version>
         <reactome.reactome-pwp-bom.version>1.0.0</reactome.reactome-pwp-bom.version>
 
+        <logback.version>1.2.3</logback.version>
+        <reflection.version>0.9.12</reflection.version>
+        <jodd.bean.version>5.1.6</jodd.bean.version>
+
+        <!--maven build and plugins-->
+        <maven.compiler.version>3.8.1</maven.compiler.version>
+        <maven.surefire.version>2.22.2</maven.surefire.version>
+        <maven.failsafe.version>2.22.2</maven.failsafe.version>
+        <maven.resources.version>3.2.0</maven.resources.version>
+        <maven.jar.version>3.2.0</maven.jar.version>
+        <maven.source.version>3.2.1</maven.source.version>
+        <maven.aspectj.version>1.4</maven.aspectj.version>
+
     </properties>
     <dependencyManagement>
         <dependencies>
@@ -61,6 +74,20 @@
                 <version>${reactome.reactome-pwp-bom.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
+            </dependency>
+
+            <!--        REACTOME DEPENDENCIES       -->
+
+            <dependency>
+                <groupId>org.reflections</groupId>
+                <artifactId>reflections</artifactId>
+                <version>${reflection.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.jodd</groupId>
+                <artifactId>jodd-bean</artifactId>
+                <version>${jodd.bean.version}</version>
             </dependency>
 
         </dependencies>
