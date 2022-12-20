@@ -34,38 +34,39 @@
     <properties>
         <!--             Internal Library            -->
 
-        <reactome.reactome-base.version>1.2.22</reactome.reactome-base.version>
+        <reactome.reactome-base.version>2.1.0-SNAPSHOT</reactome.reactome-base.version>
         <reactome.graph-core.version>2.0.5</reactome.graph-core.version>
-        <reactome.analysis-core.version>3.4.3</reactome.analysis-core.version>
-        <reactome.diagram-reader.version>1.2.0</reactome.diagram-reader.version>
+        <reactome.analysis-core.version>3.4.4</reactome.analysis-core.version>
+        <reactome.diagram-reader.version>1.2.1</reactome.diagram-reader.version>
         <reactome.diagram-exporter.version>2.0.6</reactome.diagram-exporter.version>
-        <reactome.search-indexer.version>1.0.5-SNAPSHOT</reactome.search-indexer.version>
+        <reactome.search-indexer.version>1.0.5</reactome.search-indexer.version>
         <reactome.fireworks-exporter.version>1.2.3</reactome.fireworks-exporter.version>
-        <reactome.reaction-exporter.version>1.2.2</reactome.reaction-exporter.version>
-        <reactome.search-core.version>1.4.7</reactome.search-core.version>
-        <reactome.interactor-core.version>1.1.0</reactome.interactor-core.version>
-        <reactome.sbml-exporter.version>2.2.2</reactome.sbml-exporter.version>
-        <reactome.event-pdf.version>1.1.3-SNAPSHOT</reactome.event-pdf.version>
-        <reactome.reactome-utils.version>1.1.0</reactome.reactome-utils.version>
-        <reactome.analysis-report.version>1.2.2</reactome.analysis-report.version>
+        <reactome.reaction-exporter.version>1.2.3</reactome.reaction-exporter.version>
+        <reactome.search-core.version>1.4.8</reactome.search-core.version>
+        <reactome.interactor-core.version>1.1.1</reactome.interactor-core.version>
+        <reactome.sbml-exporter.version>2.2.3</reactome.sbml-exporter.version>
+        <reactome.event-pdf.version>1.1.4</reactome.event-pdf.version>
+        <reactome.reactome-utils.version>1.1.1</reactome.reactome-utils.version>
+        <reactome.analysis-report.version>1.2.3</reactome.analysis-report.version>
 
         <!--            Exterior Endpoints           -->
 
-        <reactome.content-service.version>2.1.5-SNAPSHOT</reactome.content-service.version>
-        <reactome.analysis-service.version>3.1.2</reactome.analysis-service.version>
+        <reactome.content-service.version>2.1.6</reactome.content-service.version>
+        <reactome.analysis-service.version>3.1.3</reactome.analysis-service.version>
         <reactome.data-content.version>2.0.5</reactome.data-content.version>
-        <reactome.report-logger.version>1.1.1</reactome.report-logger.version>
-        <reactome.experiment-digester.version>1.0.2</reactome.experiment-digester.version>
-        <reactome.disease-digester.version>1.2.0</reactome.disease-digester.version>
+        <reactome.report-logger.version>1.1.2</reactome.report-logger.version>
+        <reactome.experiment-digester.version>1.0.3</reactome.experiment-digester.version>
+        <reactome.disease-digester.version>1.2.1</reactome.disease-digester.version>
+        <reactome.popular-pathways.version>1.1.4</reactome.popular-pathways.version>
 
         <!--             Release Pipeline            -->
 
-        <reactome.graph-qa.version>1.1.2</reactome.graph-qa.version>
-        <reactome.graph-importer.version>2.0.2</reactome.graph-importer.version>
-        <reactome.diagram-converter.version>3.0.2</reactome.diagram-converter.version>
-        <reactome.fireworks-layout.version>3.0.2</reactome.fireworks-layout.version>
-        <reactome.data-export.version>2.0.2</reactome.data-export.version>
-        <reactome.interaction-exporter.version>2.0.2</reactome.interaction-exporter.version>
+        <reactome.graph-qa.version>1.1.3</reactome.graph-qa.version>
+        <reactome.graph-importer.version>2.0.3</reactome.graph-importer.version>
+        <reactome.diagram-converter.version>3.0.3</reactome.diagram-converter.version>
+        <reactome.fireworks-layout.version>3.0.3</reactome.fireworks-layout.version>
+        <reactome.data-export.version>2.0.3</reactome.data-export.version>
+        <reactome.interaction-exporter.version>2.0.3</reactome.interaction-exporter.version>
     </properties>
 
     <dependencyManagement>
@@ -91,7 +92,7 @@
             </dependency>
 
             <dependency>
-                <groupId>org.reactome.server</groupId>
+                <groupId>org.reactome.server.tools</groupId>
                 <artifactId>diagram-reader</artifactId>
                 <version>${reactome.diagram-reader.version}</version>
             </dependency>
@@ -267,6 +268,7 @@
     </repositories>
 
     <distributionManagement>
+        <!--Configures the distribution to nexus repository. mvn:deploy -->
         <!-- EBI repo -->
         <repository>
             <id>pst-release</id>
