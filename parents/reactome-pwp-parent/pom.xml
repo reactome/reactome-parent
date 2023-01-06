@@ -9,7 +9,6 @@
     <version>1.0.0</version>
     <name>Reactome PWP Parent</name>
 
-
     <description>
         Reactome Parent aims to centralise dependencies management
     </description>
@@ -31,9 +30,45 @@
         <java.version>11</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-
         <reactome.reactome-bom.version>1.0.0</reactome.reactome-bom.version>
         <reactome.reactome-pwp-bom.version>1.0.0</reactome.reactome-pwp-bom.version>
+
+        <!--scroller-->
+        <gwtVersion>2.9.0</gwtVersion>
+        <jetty.runner.version>9.4.41.v20210516</jetty.runner.version>
+        <elemental2.version>1.1.0</elemental2.version>
+        <junit.jupiter.version>5.8.0-M1</junit.jupiter.version>
+        <slf4j.version>1.7.22</slf4j.version>
+
+        <!--carrousel-->
+        <!--shared dependencies-->
+
+        <!--model-->
+        <junit.version>4.13.2</junit.version>  <!-- gwt user uses Junit 4 -->
+
+        <!--analysis-client-->
+        <!--shared dependencies-->
+
+        <!--diagram-->
+        <lib.gwt.svg.version>0.5.11</lib.gwt.svg.version>
+
+        <!--quadtree-->
+        <!--fireworks-->
+        <!--chebi-->
+        <!--gxa-->
+        <!--analytics-->
+        <!--pdb-->
+        <!--rhea-->
+        <!--shared dependencies-->
+
+        <!--maven build and plugins-->
+        <maven.jar.version>3.2.0</maven.jar.version>
+        <gwt.maven.version>1.0-rc-6</gwt.maven.version>
+        <maven.war.version>3.3.1</maven.war.version>
+        <maven.source.version>3.2.1</maven.source.version>
+        <maven.deploy.version>3.0.0-M1</maven.deploy.version>
+        <wagon.ssh.version>3.5.3</wagon.ssh.version>
+        <maven.compiler.version>3.8.1</maven.compiler.version>
 
     </properties>
     <dependencyManagement>
@@ -54,6 +89,66 @@
                 <version>${reactome.reactome-pwp-bom.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>com.google.gwt</groupId>
+                <artifactId>gwt</artifactId>
+                <version>${gwtVersion}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <!--        REACTOME PWP DEPENDENCIES       -->
+            <dependency>
+                <groupId>org.eclipse.jetty</groupId>
+                <artifactId>jetty-runner</artifactId>
+                <version>${jetty.runner.version}</version>
+                <scope>test</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>com.google.elemental2</groupId>
+                <artifactId>elemental2-core</artifactId>
+                <version>${elemental2.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.google.elemental2</groupId>
+                <artifactId>elemental2-dom</artifactId>
+                <version>${elemental2.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.junit.jupiter</groupId>
+                <artifactId>junit-jupiter-api</artifactId>
+                <version>${junit.jupiter.version}</version>
+                <scope>test</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-api</artifactId>
+                <version>${slf4j.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-nop</artifactId>
+                <version>${slf4j.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>${junit.version}</version>
+                <scope>test</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.vectomatic</groupId>
+                <artifactId>lib-gwt-svg</artifactId>
+                <version>${lib.gwt.svg.version}</version>
             </dependency>
 
         </dependencies>
