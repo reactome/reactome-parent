@@ -58,6 +58,8 @@
         <reactome.experiment-digester.version>1.0.3</reactome.experiment-digester.version>
         <reactome.disease-digester.version>1.2.1</reactome.disease-digester.version>
         <reactome.popular-pathways.version>1.1.4</reactome.popular-pathways.version>
+        <reactome.restful-api.version>0.0.2</reactome.restful-api.version>
+
 
         <!--             Release Pipeline            -->
 
@@ -193,6 +195,18 @@
                 <groupId>org.reactome.server</groupId>
                 <artifactId>disease-digester</artifactId>
                 <version>${reactome.disease-digester.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.reactome.server.service</groupId>
+                <artifactId>popular-pathways</artifactId>
+                <version>${reactome.popular.pathways.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.reactome.server</groupId>
+                <artifactId>restfulapi</artifactId>
+                <version>${reactome.restful.api.version}</version>
             </dependency>
 
             <!--             Release Pipeline            -->

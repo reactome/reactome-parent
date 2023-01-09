@@ -143,6 +143,9 @@
         <gson.version>2.9.0</gson.version>
         <commons.csv.version>1.9.0</commons.csv.version>
 
+        <!--restful-api-->
+        <pathway.exchange.version>1.0.0</pathway.exchange.version>
+
         <!--graph importer-->
         <neo4j.version>4.3.2</neo4j.version>
         <json.version>20220320</json.version>
@@ -627,6 +630,12 @@
                 <groupId>org.apache.commons</groupId>
                 <artifactId>commons-math3</artifactId>
                 <version>${commons-math3.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.reactome.export</groupId>
+                <artifactId>pathwayExchange</artifactId>
+                <version>${pathway.exchange.version}</version>
             </dependency>
 
         </dependencies>

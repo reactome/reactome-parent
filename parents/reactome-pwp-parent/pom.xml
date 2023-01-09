@@ -52,6 +52,10 @@
         <!--diagram-->
         <lib.gwt.svg.version>0.5.11</lib.gwt.svg.version>
 
+        <!--diagram-JS-->
+        <!--fireworks-JS-->
+        <gwt.exporter.version>2.4.0</gwt.exporter.version>
+
         <!--quadtree-->
         <!--fireworks-->
         <!--chebi-->
@@ -149,6 +153,13 @@
                 <groupId>org.vectomatic</groupId>
                 <artifactId>lib-gwt-svg</artifactId>
                 <version>${lib.gwt.svg.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.timepedia.exporter</groupId>
+                <artifactId>gwtexporter</artifactId>
+                <version>${gwt.exporter.version}</version>
+                <scope>provided</scope>
             </dependency>
 
         </dependencies>
