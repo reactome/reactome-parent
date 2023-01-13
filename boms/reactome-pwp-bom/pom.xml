@@ -3,12 +3,12 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>org.reactome</groupId>
+        <groupId>org.reactome.maven</groupId>
         <artifactId>bom-parent</artifactId>
         <version>1.0.0</version>
     </parent>
 
-    <groupId>org.reactome.web.pwp</groupId>
+    <groupId>org.reactome.maven</groupId>
     <artifactId>reactome-pwp-bom</artifactId>
 
     <packaging>pom</packaging>

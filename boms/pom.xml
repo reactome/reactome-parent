@@ -1,18 +1,33 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-<modelVersion>4.0.0</modelVersion>
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
 
-<groupId>org.reactome</groupId>
-<artifactId>bom-parent</artifactId>
+    <groupId>org.reactome.maven</groupId>
+    <artifactId>bom-parent</artifactId>
 
-<packaging>pom</packaging>
-<version>1.0.0</version>
-<name>Reactome BOM Parent</name>
+    <packaging>pom</packaging>
+    <version>1.0.0</version>
+    <name>Reactome BOM Parent</name>
 
-<modules>
-    <module>reactome-bom</module>
-    <module>reactome-pwp-bom</module>
-</modules>
+    <modules>
+        <module>reactome-bom</module>
+        <module>reactome-pwp-bom</module>
+    </modules>
 
+    <distributionManagement>
+        <!-- EBI repo -->
+        <repository>
+            <id>pst-release</id>
+            <name>EBI Nexus Repository</name>
+            <url>https://www.ebi.ac.uk/Tools/maven/repos/content/repositories/pst-release</url>
+        </repository>
+        <!-- EBI SNAPSHOT repo -->
+        <snapshotRepository>
+            <uniqueVersion>false</uniqueVersion>
+            <id>pst-snapshots</id>
+            <name>EBI Nexus Snapshots Repository</name>
+            <url>https://www.ebi.ac.uk/Tools/maven/repos/content/repositories/pst-snapshots</url>
+        </snapshotRepository>
+    </distributionManagement>
 
 </project>

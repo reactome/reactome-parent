@@ -8,7 +8,7 @@
         <version>2.7.6</version>
     </parent>
 
-    <groupId>org.reactome.server</groupId>
+    <groupId>org.reactome.maven</groupId>
     <artifactId>reactome-parent</artifactId>
 
     <packaging>pom</packaging>
