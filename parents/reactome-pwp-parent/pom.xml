@@ -80,7 +80,7 @@
 
             <!--        DEFINING REACTOME PACKAGES       -->
             <dependency>
-                <groupId>org.reactome.server</groupId>
+                <groupId>org.reactome.maven</groupId>
                 <artifactId>reactome-bom</artifactId>
                 <version>${reactome.reactome-bom.version}</version>
                 <type>pom</type>
@@ -88,7 +88,7 @@
             </dependency>
 
             <dependency>
-                <groupId>org.reactome.web.pwp</groupId>
+                <groupId>org.reactome.maven</groupId>
                 <artifactId>reactome-pwp-bom</artifactId>
                 <version>${reactome.reactome-pwp-bom.version}</version>
                 <type>pom</type>
