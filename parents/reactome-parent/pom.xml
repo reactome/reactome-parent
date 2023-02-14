@@ -43,7 +43,7 @@
 
         <!--graph core-->
         <logback.version>1.2.3</logback.version>
-        <reflections.version>0.10.2</reflections.version>
+        <reflections.version>0.9.12</reflections.version> <!--Do not use 0.10.2 as it is messing within executable jars-->
         <jodd.bean.version>5.1.6</jodd.bean.version>
 
         <!--analysis core-->
