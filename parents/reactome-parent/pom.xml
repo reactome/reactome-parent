@@ -12,7 +12,7 @@
     <artifactId>reactome-parent</artifactId>
 
     <packaging>pom</packaging>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
     <name>Reactome Parent</name>
 
 
@@ -62,14 +62,13 @@
         <commons.io.version>2.11.0</commons.io.version>
         <layout.version>7.2.3</layout.version>
         <kernel.version>7.2.2</kernel.version>
-        <jaxb.version>2.3.0</jaxb.version>
+        <jaxb.version>2.3.1</jaxb.version>
         <activation.version>1.1.1</activation.version>
         <aspose.version>21.9</aspose.version>
 
         <!--search indexer-->
         <solr.version>9.0.0</solr.version>
         <mail.version>1.6.2</mail.version>
-        <old.jaxb.version>4.0.0</old.jaxb.version>
         <commons.compress.version>1.22</commons.compress.version>
 
         <!--fireworks exporter-->
@@ -340,12 +339,12 @@
             <dependency>
                 <groupId>com.sun.xml.bind</groupId>
                 <artifactId>jaxb-impl</artifactId>
-                <version>${old.jaxb.version}</version>
+                <version>${jaxb.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.sun.xml.bind</groupId>
                 <artifactId>jaxb-core</artifactId>
-                <version>${old.jaxb.version}</version>
+                <version>${jaxb.version}</version>
             </dependency>
 
             <dependency>
