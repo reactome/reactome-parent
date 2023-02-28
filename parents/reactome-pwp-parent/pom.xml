@@ -6,7 +6,7 @@
     <artifactId>reactome-pwp-parent</artifactId>
 
     <packaging>pom</packaging>
-    <version>1.0.1</version>
+    <version>1.0.2</version>
     <name>Reactome PWP Parent</name>
 
     <description>
@@ -15,7 +15,7 @@
     <url>https://github.com/reactome/reactome-parent</url>
     <organization>
         <name>The European Bioinformatics Institute</name>
-        <url>http://www.ebi.ac.uk/</url>
+        <url>https://www.ebi.ac.uk/</url>
     </organization>
 
     <developers>
@@ -30,8 +30,8 @@
         <java.version>11</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-        <reactome.reactome-bom.version>1.0.0</reactome.reactome-bom.version>
-        <reactome.reactome-pwp-bom.version>1.0.1</reactome.reactome-pwp-bom.version>
+        <reactome.reactome-bom.version>1.0.1</reactome.reactome-bom.version>
+        <reactome.reactome-pwp-bom.version>1.0.2</reactome.reactome-pwp-bom.version>
 
         <!--scroller-->
         <gwtVersion>2.9.0</gwtVersion>
