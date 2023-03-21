@@ -10,7 +10,7 @@
 
     <groupId>org.reactome.maven</groupId>
     <artifactId>reactome-bom</artifactId>
-    <version>1.0.1</version>
+    <version>1.0.2</version>
 
     <name>Reactome BOM</name>
     <packaging>pom</packaging>

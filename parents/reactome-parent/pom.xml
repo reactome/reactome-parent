@@ -12,7 +12,7 @@
     <artifactId>reactome-parent</artifactId>
 
     <packaging>pom</packaging>
-    <version>1.0.1</version>
+    <version>1.0.2</version>
     <name>Reactome Parent</name>
 
     <description>
@@ -41,7 +41,7 @@
         <reactome.reactome-pwp-bom.version>1.0.2</reactome.reactome-pwp-bom.version>
 
         <!--graph core-->
-        <logback.version>1.2.3</logback.version>
+        <logback.version>1.2.11</logback.version> <!--Do not update logback to prevent no log output-->
         <reflections.version>0.9.12</reflections.version> <!--Do not use 0.10.2 as it is messing within executable jars-->
         <jodd.bean.version>5.1.6</jodd.bean.version>
 
@@ -100,7 +100,7 @@
         <javax.servlet.version>4.0.1</javax.servlet.version>
         <httpclient.verison>4.5.13</httpclient.verison>
         <httpmime.version>4.5.13</httpmime.version>
-        <slf4j.api.version>2.0.0-alpha1</slf4j.api.version>
+        <slf4j.api.version>1.7.36</slf4j.api.version> <!--Do not update slf4j to prevent no log output-->
 
         <!--analysis core-->
         <jsoup.version>1.14.3</jsoup.version>
