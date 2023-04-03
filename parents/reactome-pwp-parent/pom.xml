@@ -30,7 +30,7 @@
         <java.version>11</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-        <reactome.reactome-bom.version>1.0.1</reactome.reactome-bom.version>
+        <reactome.reactome-bom.version>1.0.2</reactome.reactome-bom.version>
         <reactome.reactome-pwp-bom.version>1.0.2</reactome.reactome-pwp-bom.version>
 
         <!--scroller-->
