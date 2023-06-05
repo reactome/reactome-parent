@@ -6,7 +6,7 @@
     <artifactId>reactome-pwp-parent</artifactId>
 
     <packaging>pom</packaging>
-    <version>1.0.2</version>
+    <version>1.0.3-SNAPSHOT</version>
     <name>Reactome PWP Parent</name>
 
     <description>
@@ -31,7 +31,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
         <reactome.reactome-bom.version>1.0.2</reactome.reactome-bom.version>
-        <reactome.reactome-pwp-bom.version>1.0.2</reactome.reactome-pwp-bom.version>
+        <reactome.reactome-pwp-bom.version>1.0.3-SNAPSHOT</reactome.reactome-pwp-bom.version>
 
         <!--scroller-->
         <gwtVersion>2.9.0</gwtVersion>
