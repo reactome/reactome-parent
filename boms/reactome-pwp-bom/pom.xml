@@ -12,7 +12,7 @@
     <artifactId>reactome-pwp-bom</artifactId>
 
     <packaging>pom</packaging>
-    <version>1.0.3-SNAPSHOT</version>
+    <version>1.0.3</version>
     <name>Reactome PWP BOM</name>
 
     <description>
@@ -33,23 +33,23 @@
     </developers>
 
     <properties>
-        <pwp.scroller.version>1.1.2</pwp.scroller.version>
-        <pwp.carrousel.version>1.1.5</pwp.carrousel.version>
-        <pwp.quadtree.version>1.3.2</pwp.quadtree.version>
+        <pwp.scroller.version>1.1.3</pwp.scroller.version>
+        <pwp.carrousel.version>1.1.6</pwp.carrousel.version>
+        <pwp.quadtree.version>1.3.3</pwp.quadtree.version>
 
-        <pwp.model.version>2.2.4-SNAPSHOT</pwp.model.version>
-        <pwp.analysis-client.version>2.0.4-SNAPSHOT</pwp.analysis-client.version>
+        <pwp.model.version>2.2.4</pwp.model.version>
+        <pwp.analysis-client.version>2.0.4</pwp.analysis-client.version>
 
-        <pwp.diagram.version>4.1.5-SNAPSHOT</pwp.diagram.version>  <!--diagram-js shares the same version number-->
-        <pwp.fireworks.version>2.0.4-SNAPSHOT</pwp.fireworks.version>   <!--fireworks-js shares the same version number-->
+        <pwp.diagram.version>4.1.5</pwp.diagram.version>  <!--diagram-js shares the same version number-->
+        <pwp.fireworks.version>2.0.4</pwp.fireworks.version>   <!--fireworks-js shares the same version number-->
 
-        <pwp.chebi.version>1.2.3</pwp.chebi.version>
-        <pwp.gxa.version>3.1.2</pwp.gxa.version>
-        <pwp.analytics.version>2.1.2</pwp.analytics.version>
-        <pwp.pdb.version>2.3.4</pwp.pdb.version>
-        <pwp.rhea.version>1.3.4</pwp.rhea.version>
+        <pwp.chebi.version>1.2.4</pwp.chebi.version>
+        <pwp.gxa.version>3.1.3</pwp.gxa.version>
+        <pwp.analytics.version>2.1.3</pwp.analytics.version>
+        <pwp.pdb.version>2.3.5</pwp.pdb.version>
+        <pwp.rhea.version>1.3.5</pwp.rhea.version>
 
-        <pwp.browser.version>3.9.4-SNAPSHOT</pwp.browser.version>
+        <pwp.browser.version>3.9.4</pwp.browser.version>
 
     </properties>
     <dependencyManagement>
