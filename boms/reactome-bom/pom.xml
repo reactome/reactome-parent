@@ -10,7 +10,7 @@
 
     <groupId>org.reactome.maven</groupId>
     <artifactId>reactome-bom</artifactId>
-    <version>1.0.3</version>
+    <version>1.0.4</version>
 
     <name>Reactome BOM</name>
     <packaging>pom</packaging>
@@ -37,7 +37,7 @@
         <reactome.graph-core.version>2.0.8</reactome.graph-core.version>
         <reactome.analysis-core.version>3.4.7</reactome.analysis-core.version>
         <reactome.diagram-reader.version>1.2.4</reactome.diagram-reader.version>
-        <reactome.diagram-exporter.version>2.0.9</reactome.diagram-exporter.version>
+        <reactome.diagram-exporter.version>2.0.10</reactome.diagram-exporter.version>
         <reactome.search-indexer.version>1.0.8</reactome.search-indexer.version>
         <reactome.fireworks-exporter.version>1.2.6</reactome.fireworks-exporter.version>
         <reactome.reaction-exporter.version>1.2.6</reactome.reaction-exporter.version>

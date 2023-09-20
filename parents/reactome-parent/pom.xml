@@ -12,7 +12,7 @@
     <artifactId>reactome-parent</artifactId>
 
     <packaging>pom</packaging>
-    <version>1.0.3</version>
+    <version>1.0.4</version>
     <name>Reactome Parent</name>
 
     <description>
@@ -37,7 +37,7 @@
         <java.version>11</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-        <reactome.reactome-bom.version>1.0.3</reactome.reactome-bom.version>
+        <reactome.reactome-bom.version>1.0.4</reactome.reactome-bom.version>
         <reactome.reactome-pwp-bom.version>1.0.3</reactome.reactome-pwp-bom.version>
 
         <!--graph core-->
