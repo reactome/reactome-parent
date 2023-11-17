@@ -40,7 +40,7 @@
         <reactome.diagram-exporter.version>2.0.10</reactome.diagram-exporter.version>
         <reactome.search-indexer.version>1.0.8</reactome.search-indexer.version>
         <reactome.fireworks-exporter.version>1.2.6</reactome.fireworks-exporter.version>
-        <reactome.reaction-exporter.version>1.2.6</reactome.reaction-exporter.version>
+        <reactome.reaction-exporter.version>1.2.7-SNAPSHOT</reactome.reaction-exporter.version>
         <reactome.search-core.version>1.4.11</reactome.search-core.version>
         <reactome.interactor-core.version>1.1.4</reactome.interactor-core.version>
         <reactome.sbml-exporter.version>2.2.6</reactome.sbml-exporter.version>

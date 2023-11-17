@@ -76,6 +76,7 @@
 
         <!--reaction exporter-->
         <jackson.dataformat.version>2.13.1</jackson.dataformat.version>
+        <owlapi.version>5.5.0</owlapi.version>
         <guava.version>30.1.1-jre</guava.version>
 
         <!--search core-->
@@ -363,6 +364,12 @@
                 <groupId>com.fasterxml.jackson.dataformat</groupId>
                 <artifactId>jackson-dataformat-xml</artifactId>
                 <version>${jackson.dataformat.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>net.sourceforge.owlapi</groupId>
+                <artifactId>owlapi-oboformat</artifactId>
+                <version>${owlapi.version}</version>
             </dependency>
 
             <dependency>
