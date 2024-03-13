@@ -12,7 +12,7 @@
     <artifactId>reactome-parent</artifactId>
 
     <packaging>pom</packaging>
-    <version>1.0.4</version>
+    <version>1.0.5-SNAPSHOT</version>
     <name>Reactome Parent</name>
 
     <description>
@@ -37,7 +37,7 @@
         <java.version>11</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-        <reactome.reactome-bom.version>1.0.4</reactome.reactome-bom.version>
+        <reactome.reactome-bom.version>1.0.5-SNAPSHOT</reactome.reactome-bom.version>
         <reactome.reactome-pwp-bom.version>1.0.3</reactome.reactome-pwp-bom.version>
 
         <!--graph core-->
@@ -96,7 +96,8 @@
         <commons.collections4.version>4.4</commons.collections4.version>
 
         <!--Event PDF-->
-        <itext.version>7.2.2</itext.version>
+        <itext.version>8.0.3</itext.version>
+        <itext.html.version>5.0.3</itext.html.version>
 
         <!--reactome utils-->
         <javax.servlet.version>4.0.1</javax.servlet.version>
@@ -304,6 +305,12 @@
                 <groupId>com.itextpdf</groupId>
                 <artifactId>kernel</artifactId>
                 <version>${kernel.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.itextpdf</groupId>
+                <artifactId>html2pdf</artifactId>
+                <version>${itext.html.version}</version>
             </dependency>
 
             <dependency>
