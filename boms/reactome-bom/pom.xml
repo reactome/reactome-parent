@@ -67,7 +67,7 @@
         <reactome.diagram-converter.version>3.0.7</reactome.diagram-converter.version>
         <reactome.fireworks-layout.version>3.0.7</reactome.fireworks-layout.version>
         <reactome.data-export.version>2.0.7</reactome.data-export.version>
-        <reactome.interaction-exporter.version>2.0.5</reactome.interaction-exporter.version>
+        <reactome.interaction-exporter.version>2.0.7</reactome.interaction-exporter.version>
     </properties>
 
     <dependencyManagement>
