@@ -5,21 +5,21 @@
     <parent>
         <groupId>org.reactome.maven</groupId>
         <artifactId>bom-parent</artifactId>
-        <version>1.0.0</version>
+        <version>1.0.1</version>
     </parent>
 
-    <groupId>org.reactome.maven</groupId>
     <artifactId>reactome-bom</artifactId>
-    <version>1.0.5</version>
+    <version>1.0.6</version>
 
     <name>Reactome BOM</name>
     <packaging>pom</packaging>
 
     <description>Reactome BOM aims to centralise dependencies management</description>
     <url>https://github.com/reactome/reactome-parent</url>
+
     <organization>
-        <name>The European Bioinformatics Institute</name>
-        <url>https://www.ebi.ac.uk/</url>
+        <name>Reactome</name>
+        <url>https://reactome.org/</url>
     </organization>
 
     <developers>
@@ -27,6 +27,8 @@
             <id>eragueneau</id>
             <name>Eliot Ragueneau</name>
             <email>eragueneau@ebi.ac.uk</email>
+            <organization>The European Bioinformatics Institute</organization>
+            <organizationUrl>https://www.ebi.ac.uk/</organizationUrl>
         </developer>
     </developers>
 
@@ -281,21 +283,18 @@
     </repositories>
 
     <distributionManagement>
-        <!--Configures the distribution to nexus repository. mvn:deploy -->
-        <!-- EBI repo -->
+        <!-- Sonatype Release repo -->
         <repository>
-            <id>pst-release</id>
-            <name>EBI Nexus Repository</name>
-            <url>https://www.ebi.ac.uk/Tools/maven/repos/content/repositories/pst-release</url>
+            <id>ossrh</id>
+            <name>Sonatype Release Repository</name>
+            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2</url>
         </repository>
-        <!-- EBI SNAPSHOT repo -->
+
+        <!-- Sonatype SNAPSHOT repo -->
         <snapshotRepository>
-            <uniqueVersion>false</uniqueVersion>
-            <id>pst-snapshots</id>
-            <name>EBI Nexus Snapshots Repository</name>
-            <url>https://www.ebi.ac.uk/Tools/maven/repos/content/repositories/pst-snapshots</url>
+            <id>ossrh</id>
+            <name>Sonatype Snapshot Repository</name>
+            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
         </snapshotRepository>
     </distributionManagement>
-
-
 </project>
