@@ -12,16 +12,17 @@
     <artifactId>reactome-parent</artifactId>
 
     <packaging>pom</packaging>
-    <version>1.0.5</version>
+    <version>1.0.6</version>
     <name>Reactome Parent</name>
 
     <description>
         Reactome Parent aims to centralise dependencies management
     </description>
     <url>https://github.com/reactome/reactome-parent</url>
+
     <organization>
-        <name>The European Bioinformatics Institute</name>
-        <url>https://www.ebi.ac.uk/</url>
+        <name>Reactome</name>
+        <url>https://reactome.org</url>
     </organization>
 
     <developers>
@@ -29,6 +30,8 @@
             <id>eragueneau</id>
             <name>Eliot Ragueneau</name>
             <email>eragueneau@ebi.ac.uk</email>
+            <organization>The European Bioinformatics Institute</organization>
+            <organizationUrl>https://www.ebi.ac.uk/</organizationUrl>
         </developer>
     </developers>
 
@@ -37,8 +40,8 @@
         <java.version>11</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-        <reactome.reactome-bom.version>1.0.5</reactome.reactome-bom.version>
-        <reactome.reactome-pwp-bom.version>1.0.3</reactome.reactome-pwp-bom.version>
+        <reactome.reactome-bom.version>1.0.6</reactome.reactome-bom.version>
+        <reactome.reactome-pwp-bom.version>1.0.4</reactome.reactome-pwp-bom.version>
 
         <!--graph core-->
         <logback.version>1.2.11</logback.version> <!--Do not update logback to prevent no log output-->
@@ -98,7 +101,7 @@
         <itext.html.version>5.0.3</itext.html.version>
 
         <!--reactome utils-->
-        <javax.servlet.version>4.0.1</javax.servlet.version>
+        <tomcat.servlet.api.version>9.0.31</tomcat.servlet.api.version>
         <httpclient.verison>4.5.13</httpclient.verison>
         <httpmime.version>4.5.13</httpmime.version>
         <slf4j.api.version>1.7.36</slf4j.api.version> <!--Do not update slf4j to prevent no log output-->
@@ -168,18 +171,19 @@
         <maven.failsafe.version>2.22.2</maven.failsafe.version>
         <maven.resources.version>3.2.0</maven.resources.version>
         <maven.jar.version>3.2.0</maven.jar.version>
-        <maven.source.version>3.2.1</maven.source.version>
+        <maven.source.version>3.3.1</maven.source.version>
         <maven.aspectj.version>1.4</maven.aspectj.version>
         <maven.assembly.version>3.3.0</maven.assembly.version>
         <maven.deploy.version>3.0.0-M1</maven.deploy.version>
         <maven.install.version>3.0.0-M1</maven.install.version>
-        <maven.javadoc.version>2.10.3</maven.javadoc.version>
+        <maven.javadoc.version>3.11.2</maven.javadoc.version>
         <maven.site.version>3.5.1</maven.site.version>
         <maven.info.report.version>3.1.1</maven.info.report.version>
         <maven.pmd.version>3.14.0</maven.pmd.version>
-        <maven.release.version>3.0.0-M1</maven.release.version>
+        <maven.release.version>3.3.1</maven.release.version>
         <maven.war.version>2.6</maven.war.version>
-
+        <maven.gpg.version>3.2.7</maven.gpg.version>
+        <nexus-staging-maven-plugin>1.7.0</nexus-staging-maven-plugin>
     </properties>
     <dependencyManagement>
         <dependencies>
@@ -687,20 +691,18 @@
     </repositories>
 
     <distributionManagement>
-        <!-- EBI repo -->
+        <!-- Sonatype Release repo -->
         <repository>
-            <id>pst-release</id>
-            <name>EBI Nexus Repository</name>
-            <url>https://www.ebi.ac.uk/Tools/maven/repos/content/repositories/pst-release</url>
+            <id>ossrh</id>
+            <name>Sonatype Release Repository</name>
+            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2</url>
         </repository>
-        <!-- EBI SNAPSHOT repo -->
+
+        <!-- Sonatype SNAPSHOT repo -->
         <snapshotRepository>
-            <uniqueVersion>false</uniqueVersion>
-            <id>pst-snapshots</id>
-            <name>EBI Nexus Snapshots Repository</name>
-            <url>https://www.ebi.ac.uk/Tools/maven/repos/content/repositories/pst-snapshots</url>
+            <id>ossrh</id>
+            <name>Sonatype Snapshot Repository</name>
+            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
         </snapshotRepository>
     </distributionManagement>
-
-
 </project>

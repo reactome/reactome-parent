@@ -6,16 +6,17 @@
     <artifactId>reactome-pwp-parent</artifactId>
 
     <packaging>pom</packaging>
-    <version>1.0.3</version>
+    <version>1.0.4</version>
     <name>Reactome PWP Parent</name>
 
     <description>
         Reactome Parent aims to centralise dependencies management
     </description>
     <url>https://github.com/reactome/reactome-parent</url>
+
     <organization>
-        <name>The European Bioinformatics Institute</name>
-        <url>https://www.ebi.ac.uk/</url>
+        <name>Reactome</name>
+        <url>https://reactome.org</url>
     </organization>
 
     <developers>
@@ -23,6 +24,8 @@
             <id>eragueneau</id>
             <name>Eliot Ragueneau</name>
             <email>eragueneau@ebi.ac.uk</email>
+            <organization>The European Bioinformatics Institute</organization>
+            <organizationUrl>https://www.ebi.ac.uk/</organizationUrl>
         </developer>
     </developers>
 
@@ -30,8 +33,8 @@
         <java.version>11</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-        <reactome.reactome-bom.version>1.0.3</reactome.reactome-bom.version>
-        <reactome.reactome-pwp-bom.version>1.0.3</reactome.reactome-pwp-bom.version>
+        <reactome.reactome-bom.version>1.0.6</reactome.reactome-bom.version>
+        <reactome.reactome-pwp-bom.version>1.0.4</reactome.reactome-pwp-bom.version>
 
         <!--scroller-->
         <gwtVersion>2.9.0</gwtVersion>
@@ -69,11 +72,14 @@
         <maven.jar.version>3.2.0</maven.jar.version>
         <gwt.maven.version>1.0-rc-6</gwt.maven.version>
         <maven.war.version>3.3.1</maven.war.version>
-        <maven.source.version>3.2.1</maven.source.version>
+        <maven.source.version>3.3.1</maven.source.version>
         <maven.deploy.version>3.0.0-M1</maven.deploy.version>
         <wagon.ssh.version>3.5.3</wagon.ssh.version>
         <maven.compiler.version>3.8.1</maven.compiler.version>
-
+        <maven.release.version>3.3.1</maven.release.version>
+        <maven.war.version>2.6</maven.war.version>
+        <maven.gpg.version>3.2.7</maven.gpg.version>
+        <nexus-staging-maven-plugin>1.7.0</nexus-staging-maven-plugin>
     </properties>
     <dependencyManagement>
         <dependencies>
@@ -194,18 +200,18 @@
     </repositories>
 
     <distributionManagement>
-        <!-- EBI repo -->
+        <!-- Sonatype Release repo -->
         <repository>
-            <id>pst-release</id>
-            <name>EBI Nexus Repository</name>
-            <url>https://www.ebi.ac.uk/Tools/maven/repos/content/repositories/pst-release</url>
+            <id>ossrh</id>
+            <name>Sonatype Release Repository</name>
+            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2</url>
         </repository>
-        <!-- EBI SNAPSHOT repo -->
+
+        <!-- Sonatype SNAPSHOT repo -->
         <snapshotRepository>
-            <uniqueVersion>false</uniqueVersion>
-            <id>pst-snapshots</id>
-            <name>EBI Nexus Snapshots Repository</name>
-            <url>https://www.ebi.ac.uk/Tools/maven/repos/content/repositories/pst-snapshots</url>
+            <id>ossrh</id>
+            <name>Sonatype Snapshot Repository</name>
+            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
         </snapshotRepository>
     </distributionManagement>
 
