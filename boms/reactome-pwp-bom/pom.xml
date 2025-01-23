@@ -5,23 +5,23 @@
     <parent>
         <groupId>org.reactome.maven</groupId>
         <artifactId>bom-parent</artifactId>
-        <version>1.0.0</version>
+        <version>1.0.1</version>
     </parent>
 
-    <groupId>org.reactome.maven</groupId>
     <artifactId>reactome-pwp-bom</artifactId>
 
     <packaging>pom</packaging>
-    <version>1.0.3</version>
+    <version>1.0.4</version>
     <name>Reactome PWP BOM</name>
 
     <description>
         Reactome PWP BOM aims to centralise dependencies management for Pathway Portal
     </description>
     <url>https://github.com/reactome/reactome-parent</url>
+
     <organization>
-        <name>The European Bioinformatics Institute</name>
-        <url>http://www.ebi.ac.uk/</url>
+        <name>Reactome</name>
+        <url>https://reactome.org/</url>
     </organization>
 
     <developers>
@@ -29,6 +29,8 @@
             <id>eragueneau</id>
             <name>Eliot Ragueneau</name>
             <email>eragueneau@ebi.ac.uk</email>
+            <organization>The European Bioinformatics Institute</organization>
+            <organizationUrl>https://www.ebi.ac.uk/</organizationUrl>
         </developer>
     </developers>
 
@@ -189,18 +191,18 @@
     </repositories>
 
     <distributionManagement>
-        <!-- EBI repo -->
+        <!-- Sonatype Release repo -->
         <repository>
-            <id>pst-release</id>
-            <name>EBI Nexus Repository</name>
-            <url>https://www.ebi.ac.uk/Tools/maven/repos/content/repositories/pst-release</url>
+            <id>ossrh</id>
+            <name>Sonatype Release Repository</name>
+            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2</url>
         </repository>
-        <!-- EBI SNAPSHOT repo -->
+
+        <!-- Sonatype SNAPSHOT repo -->
         <snapshotRepository>
-            <uniqueVersion>false</uniqueVersion>
-            <id>pst-snapshots</id>
-            <name>EBI Nexus Snapshots Repository</name>
-            <url>https://www.ebi.ac.uk/Tools/maven/repos/content/repositories/pst-snapshots</url>
+            <id>ossrh</id>
+            <name>Sonatype Snapshot Repository</name>
+            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
         </snapshotRepository>
     </distributionManagement>
 
