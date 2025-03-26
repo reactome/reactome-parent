@@ -19,6 +19,6 @@ xmlstarlet ed -L \
 -u "//_:reactome.search-core.version" -v "${SEARCH_CORE_VERSION}" \
 -u "//_:reactome.interactors-core.version" -v "${INTERACTORS_CORE_VERSION}" \
 -u "//_:reactome.analysis-report.version" -v "${ANALYSIS_REPORT_VERSION}" \
--u "//_:reactome.server-java-utils.version" -v "${SERVER_JAVA_UTILS_VERSION}" \
+-u "//_:reactome.reactome-utils.version" -v "${SERVER_JAVA_UTILS_VERSION}" \
 pom.xml
  
