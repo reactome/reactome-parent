@@ -1,57 +1,24 @@
 #!/usr/bin/env bash
 
-# Input and output XML files
-INPUT_FILE="boms/reactome-bom/pom.xml"
-OUTPUT_FILE="boms/reactome-bom/pom.xml"
-
-# Check if the file exists
-if [[ ! -f "$INPUT_FILE" ]]; then
-  echo "Input file '$INPUT_FILE' not found!"
-  exit 1
-fi
-
-# Process the XML file
-while IFS= read -r line; do
-  # Match version tags and extract details, allowing for leading spaces
-  if [[ $line =~ ^[[:space:]]*\<([^>]+)\>([0-9]+)\.([0-9]+)\.([0-9]+)(-SNAPSHOT)?\<\/.*\>$ ]]; then
-    tag="${BASH_REMATCH[1]}"
-    major="${BASH_REMATCH[2]}"
-    minor="${BASH_REMATCH[3]}"
-    patch="${BASH_REMATCH[4]}"
-    snapshot="${BASH_REMATCH[5]}"
-
-    # Hardcoded logic for specific packages
-    case "$tag" in
-      "reactome.reactome-base.version" | \
-      "reactome.analysis-core.version" | \
-      "reactome.diagram-reader.version" | \
-      "reactome.diagram-exporter.version" | \
-      "reactome.search-indexer.version" | \
-      "reactome.fireworks-exporter.version" | \
-      "reactome.reaction-exporter.version" | \
-      "reactome.search-core.version" | \
-      "reactome.interactor-core.version" | \
-      "reactome.sbml-exporter.version" | \
-      "reactome.event-pdf.version" | \
-      "reactome.reactome-utils.version" | \
-      "reactome.analysis-report.version")
-        ((minor++))  # Increment minor version
-        patch=0      # Reset patch version to zero
-        ;;
-      "reactome.graph-core.version")
-        ((major++))  # Increment major version
-        minor=0      # Reset minor version to zero
-        patch=0      # Reset patch version to zero
-        ;;
-    esac
-
-    # Print the updated line, preserving indentation
-    leading_spaces=$(echo "$line" | grep -o '^[[:space:]]*') # Extract leading spaces
-    echo "${leading_spaces}<$tag>${major}.${minor}.${patch}${snapshot}</$tag>"
-  else
-    # Print lines that don't match the version pattern
-    echo "$line"
-  fi
-done < "$INPUT_FILE" > "$OUTPUT_FILE"
-
-echo "Updated dependencies written to '$OUTPUT_FILE'."
+xmlstarlet ed -L \
+-u "//_:reactome.graph-core.version" -v "${GRAPH_CORE_VERSION}" \
+-u "//_:reactome.sbml-exporter.version" -v "${SBML_EXPORTER_VERSION}" \
+-u "//_:reactome.search-indexer.version" -v "${SEARCH_INDEXER_VERSION}" \
+-u "//_:reactome.analysis-core.version" -v "${ANALYSIS_CORE_VERSION}" \
+-u "//_:reactome.graph-core.version" -v "${GRAPH_CORE_VERSION}" \
+-u "//_:reactome.diagram-exporter.version" -v "${DIAGRAM_EXPORTER_VERSION}" \
+-u "//_:reactome.event-pdf.version" -v "${EVENT_PDF_VERSION}" \
+-u "//_:reactome.graph-importer.version" -v "${GRAPH_IMPORTER_VERSION}" \
+-u "//_:reactome.diagram-converter.version" -v "${DIAGRAM_CONVERTER_VERSION}" \
+-u "//_:reactome.fireworks-layout.version" -v "${FIREWORKS_LAYOUT_VERSION}" \
+-u "//_:reactome.data-export.version" -v "${DATA_EXPORT_VERSION}" \
+-u "//_:reactome.interaction-exporter.version" -v "${INTERACTION_EXPORTER_VERSION}" \
+-u "//_:reactome.graph-qa.version" -v "${GRAPH_QA_VERSION}" \
+-u "//_:reactome.diagram-reader.version" -v "${DIAGRAM_READER_VERSION}" \
+-u "//_:reactome.reaction-exporter.version" -v "${REACTION_EXPORTER_VERSION}" \
+-u "//_:reactome.search-core.version" -v "${SEARCH_CORE_VERSION}" \
+-u "//_:reactome.interactors-core.version" -v "${INTERACTORS_CORE_VERSION}" \
+-u "//_:reactome.analysis-report.version" -v "${ANALYSIS_REPORT_VERSION}" \
+-u "//_:reactome.server-java-utils.version" -v "${SERVER_JAVA_UTILS_VERSION}" \
+pom.xml
+ 
