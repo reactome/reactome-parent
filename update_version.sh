@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
 POM_FILE="boms/reactome-bom/pom.xml"
 
@@ -58,6 +58,7 @@ update_and_store_version() {
     echo "$new_version"
 }
 
+
 SEARCH_INDEXER_VERSION=$(update_and_store_version "reactome.search-indexer.version" "SEARCH_INDEXER_VERSION")
 SBML_EXPORTER_VERSION=$(update_and_store_version "reactome.sbml-exporter.version" "SBML_EXPORTER_VERSION")
 ANALYSIS_CORE_VERSION=$(update_and_store_version "reactome.analysis-core.version" "ANALYSIS_CORE_VERSION")
@@ -71,7 +72,6 @@ FIREWORKS_LAYOUT_VERSION=$(update_and_store_version "reactome.fireworks-layout.v
 DATA_EXPORT_VERSION=$(update_and_store_version "reactome.data-export.version" "DATA_EXPORT_VERSION")
 INTERACTION_EXPORTER_VERSION=$(update_and_store_version "reactome.interaction-exporter.version" "INTERACTION_EXPORTER_VERSION")
 GRAPH_QA_VERSION=$(update_and_store_version "reactome.graph-qa.version" "GRAPH_QA_VERSION")
-FIREWORKS_EXPORTER_VERSION=$(update_and_store_version "reactome.graph-qa.version" "GRAPH_QA_VERSION")
 REACTION_EXPORTER_VERSION=$(update_and_store_version "reactome.reaction-exporter.version" "REACTION_EXPORTER_VERSION")
 SEARCH_CORE_VERSION=$(update_and_store_version "reactome.search-core.version" "SEARCH_CORE_VERSION")
 INTERACTORS_CORE_VERSION=$(update_and_store_version "reactome.interactors-core.version" "INTERACTORS_CORE_VERSION")
@@ -98,7 +98,21 @@ xmlstarlet ed -L \
     -u "//_:reactome.interactors-core.version" -v "${INTERACTORS_CORE_VERSION}" \
     -u "//_:reactome.analysis-report.version" -v "${ANALYSIS_REPORT_VERSION}" \
     -u "//_:reactome.reactome-utils.version" -v "${SERVER_JAVA_UTILS_VERSION}" \
-    -u "//_:reactome.fireworks-exporter.version" -v "${FIREWORKS_EXPORTER_VERSION}" \
     "${POM_FILE}"
 
 echo "Specified versions updated successfully in ${POM_FILE} and recorded in ${VERSIONS_FILE_PATH}."
+
+# bom file update
+POM_FILE="parents/reactome-parent/pom.xml"
+REACTOME_PARENT_VERSION=$(update_and_store_version "reactome.reactome-bom.version" "REACTOME_PARENT_VERSION")
+
+xmlstarlet ed -L \
+    -u "//_:reactome.reactome-bom.version" -v "${REACTOME_PARENT_VERSION}" \
+    -u "//_:project/_:version" -v "${REACTOME_PARENT_VERSION}" "${POM_FILE}" \
+    "${POM_FILE}"
+
+POM_FILE="boms/reactome-bom/pom.xml"
+
+xmlstarlet ed -L \
+    -u "//_:project/_:version" -v "${REACTOME_PARENT_VERSION}" "${POM_FILE}" \
+    "${POM_FILE}"
