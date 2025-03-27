@@ -74,7 +74,7 @@ INTERACTION_EXPORTER_VERSION=$(update_and_store_version "reactome.interaction-ex
 GRAPH_QA_VERSION=$(update_and_store_version "reactome.graph-qa.version" "GRAPH_QA_VERSION")
 REACTION_EXPORTER_VERSION=$(update_and_store_version "reactome.reaction-exporter.version" "REACTION_EXPORTER_VERSION")
 SEARCH_CORE_VERSION=$(update_and_store_version "reactome.search-core.version" "SEARCH_CORE_VERSION")
-INTERACTORS_CORE_VERSION=$(update_and_store_version "reactome.interactors-core.version" "INTERACTORS_CORE_VERSION")
+INTERACTORS_CORE_VERSION=$(update_and_store_version "reactome.interactor-core.version" "INTERACTORS_CORE_VERSION")
 ANALYSIS_REPORT_VERSION=$(update_and_store_version "reactome.analysis-report.version" "ANALYSIS_REPORT_VERSION")
 SERVER_JAVA_UTILS_VERSION=$(update_and_store_version "reactome.reactome-utils.version" "SERVER_JAVA_UTILS_VERSION")
 
@@ -95,7 +95,7 @@ xmlstarlet ed -L \
     -u "//_:reactome.graph-qa.version" -v "${GRAPH_QA_VERSION}" \
     -u "//_:reactome.reaction-exporter.version" -v "${REACTION_EXPORTER_VERSION}" \
     -u "//_:reactome.search-core.version" -v "${SEARCH_CORE_VERSION}" \
-    -u "//_:reactome.interactors-core.version" -v "${INTERACTORS_CORE_VERSION}" \
+    -u "//_:reactome.interactor-core.version" -v "${INTERACTORS_CORE_VERSION}" \
     -u "//_:reactome.analysis-report.version" -v "${ANALYSIS_REPORT_VERSION}" \
     -u "//_:reactome.reactome-utils.version" -v "${SERVER_JAVA_UTILS_VERSION}" \
     "${POM_FILE}"
