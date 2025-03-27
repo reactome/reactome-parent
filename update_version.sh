@@ -71,6 +71,7 @@ FIREWORKS_LAYOUT_VERSION=$(update_and_store_version "reactome.fireworks-layout.v
 DATA_EXPORT_VERSION=$(update_and_store_version "reactome.data-export.version" "DATA_EXPORT_VERSION")
 INTERACTION_EXPORTER_VERSION=$(update_and_store_version "reactome.interaction-exporter.version" "INTERACTION_EXPORTER_VERSION")
 GRAPH_QA_VERSION=$(update_and_store_version "reactome.graph-qa.version" "GRAPH_QA_VERSION")
+FIREWORKS_EXPORTER_VERSION=$(update_and_store_version "reactome.graph-qa.version" "GRAPH_QA_VERSION")
 REACTION_EXPORTER_VERSION=$(update_and_store_version "reactome.reaction-exporter.version" "REACTION_EXPORTER_VERSION")
 SEARCH_CORE_VERSION=$(update_and_store_version "reactome.search-core.version" "SEARCH_CORE_VERSION")
 INTERACTORS_CORE_VERSION=$(update_and_store_version "reactome.interactors-core.version" "INTERACTORS_CORE_VERSION")
@@ -97,6 +98,7 @@ xmlstarlet ed -L \
     -u "//_:reactome.interactors-core.version" -v "${INTERACTORS_CORE_VERSION}" \
     -u "//_:reactome.analysis-report.version" -v "${ANALYSIS_REPORT_VERSION}" \
     -u "//_:reactome.reactome-utils.version" -v "${SERVER_JAVA_UTILS_VERSION}" \
+    -u "//_:reactome.fireworks-exporter.version" -v "${FIREWORKS_EXPORTER_VERSION}" \
     "${POM_FILE}"
 
 echo "Specified versions updated successfully in ${POM_FILE} and recorded in ${VERSIONS_FILE_PATH}."
