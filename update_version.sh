@@ -60,6 +60,7 @@ update_and_store_version() {
 
 
 SEARCH_INDEXER_VERSION=$(update_and_store_version "reactome.search-indexer.version" "SEARCH_INDEXER_VERSION")
+FIREWORKS_EXPORTER_VERSION=$(update_and_store_version "reactome.fireworks-exporter.version" "FIREWORKS_EXPORTER_VERSION")
 SBML_EXPORTER_VERSION=$(update_and_store_version "reactome.sbml-exporter.version" "SBML_EXPORTER_VERSION")
 ANALYSIS_CORE_VERSION=$(update_and_store_version "reactome.analysis-core.version" "ANALYSIS_CORE_VERSION")
 GRAPH_CORE_VERSION=$(update_and_store_version "reactome.graph-core.version" "GRAPH_CORE_VERSION")
@@ -81,6 +82,7 @@ SERVER_JAVA_UTILS_VERSION=$(update_and_store_version "reactome.reactome-utils.ve
 # Use xmlstarlet to update the versions in pom.xml
 xmlstarlet ed -L \
     -u "//_:reactome.search-indexer.version" -v "${SEARCH_INDEXER_VERSION}" \
+    -u "//_:reactome.fireworks-exporter.version" -v "${FIREWORKS_EXPORTER_VERSION}" \
     -u "//_:reactome.sbml-exporter.version" -v "${SBML_EXPORTER_VERSION}" \
     -u "//_:reactome.analysis-core.version" -v "${ANALYSIS_CORE_VERSION}" \
     -u "//_:reactome.graph-core.version" -v "${GRAPH_CORE_VERSION}" \
