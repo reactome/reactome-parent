@@ -32,7 +32,7 @@
     <reactome.diagram-reader.version>1.3.0</reactome.diagram-reader.version>
     <reactome.diagram-exporter.version>2.1.0</reactome.diagram-exporter.version>
     <reactome.search-indexer.version>1.1.0</reactome.search-indexer.version>
-    <reactome.fireworks-exporter.version>1.2.8</reactome.fireworks-exporter.version>
+    <reactome.fireworks-exporter.version>1.3.0</reactome.fireworks-exporter.version>
     <reactome.reaction-exporter.version>1.3.0</reactome.reaction-exporter.version>
     <reactome.search-core.version>1.5.0</reactome.search-core.version>
     <reactome.interactor-core.version>1.2.0</reactome.interactor-core.version>
