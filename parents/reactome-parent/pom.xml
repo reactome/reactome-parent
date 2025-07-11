@@ -12,7 +12,7 @@
     <artifactId>reactome-parent</artifactId>
 
     <packaging>pom</packaging>
-    <version>1.0.5</version>
+    <version>1.0.6</version>
     <name>Reactome Parent</name>
 
     <description>
@@ -168,18 +168,20 @@
         <maven.failsafe.version>2.22.2</maven.failsafe.version>
         <maven.resources.version>3.2.0</maven.resources.version>
         <maven.jar.version>3.2.0</maven.jar.version>
-        <maven.source.version>3.2.1</maven.source.version>
+        <maven.source.version>3.3.1</maven.source.version>
         <maven.aspectj.version>1.4</maven.aspectj.version>
         <maven.assembly.version>3.3.0</maven.assembly.version>
         <maven.deploy.version>3.0.0-M1</maven.deploy.version>
         <maven.install.version>3.0.0-M1</maven.install.version>
-        <maven.javadoc.version>2.10.3</maven.javadoc.version>
+        <maven.javadoc.version>3.11.2</maven.javadoc.version>
         <maven.site.version>3.5.1</maven.site.version>
         <maven.info.report.version>3.1.1</maven.info.report.version>
         <maven.pmd.version>3.14.0</maven.pmd.version>
-        <maven.release.version>3.0.0-M1</maven.release.version>
+        <maven.release.version>3.3.1</maven.release.version>
         <maven.war.version>2.6</maven.war.version>
-
+        <maven.gpg.version>3.2.8</maven.gpg.version>
+        <maven.tidy.version>1.4.0</maven.tidy.version>
+        <nexus-staging-maven-plugin>1.7.0</nexus-staging-maven-plugin>
     </properties>
     <dependencyManagement>
         <dependencies>
