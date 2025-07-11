@@ -6,7 +6,7 @@
     <artifactId>reactome-pwp-parent</artifactId>
 
     <packaging>pom</packaging>
-    <version>1.0.3</version>
+    <version>1.0.4</version>
     <name>Reactome PWP Parent</name>
 
     <description>
@@ -69,11 +69,15 @@
         <maven.jar.version>3.2.0</maven.jar.version>
         <gwt.maven.version>1.0-rc-6</gwt.maven.version>
         <maven.war.version>3.3.1</maven.war.version>
-        <maven.source.version>3.2.1</maven.source.version>
+        <maven.source.version>3.3.1</maven.source.version>
         <maven.deploy.version>3.0.0-M1</maven.deploy.version>
         <wagon.ssh.version>3.5.3</wagon.ssh.version>
         <maven.compiler.version>3.8.1</maven.compiler.version>
-
+        <maven.release.version>3.3.1</maven.release.version>
+        <maven.gpg.version>3.2.8</maven.gpg.version>
+        <maven.javadoc.version>3.11.2</maven.javadoc.version>
+        <maven.tidy.version>1.4.0</maven.tidy.version>
+        <nexus-staging-maven-plugin>1.7.0</nexus-staging-maven-plugin>
     </properties>
     <dependencyManagement>
         <dependencies>
