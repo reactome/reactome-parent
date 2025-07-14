@@ -6,7 +6,7 @@
     <artifactId>reactome-pwp-parent</artifactId>
 
     <packaging>pom</packaging>
-    <version>1.0.4</version>
+    <version>1.0.4-SNAPSHOT</version>
     <name>Reactome PWP Parent</name>
 
     <description>
@@ -77,7 +77,7 @@
         <maven.gpg.version>3.2.8</maven.gpg.version>
         <maven.javadoc.version>3.11.2</maven.javadoc.version>
         <maven.tidy.version>1.4.0</maven.tidy.version>
-        <nexus-staging-maven-plugin>1.7.0</nexus-staging-maven-plugin>
+        <maven.sonatype.central.version>0.8.0</maven.sonatype.central.version>
     </properties>
     <dependencyManagement>
         <dependencies>
@@ -169,6 +169,99 @@
         </dependencies>
     </dependencyManagement>
 
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>${maven.source.version}</version>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-deploy-plugin</artifactId>
+                <extensions>true</extensions>
+                <version>${maven.deploy.version}</version>
+            </plugin>
+
+            <!-- Generate JavaDoc jar file -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>${maven.javadoc.version}</version>
+                <executions>
+                    <execution>
+                        <id>attach-javadocs</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!-- Signs deployed jar, source jar, and JavaDoc jar with GPG -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-gpg-plugin</artifactId>
+                <version>${maven.gpg.version}</version>
+                <executions>
+                    <execution>
+                        <id>sign-artifacts</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>sign</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!-- Allows "release" mvn goal to deploy a SNAPSHOT or version release to Sonatype -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-release-plugin</artifactId>
+                <version>${maven.release.version}</version>
+                <configuration>
+                    <autoVersionSubmodules>true</autoVersionSubmodules>
+                    <useReleaseProfile>false</useReleaseProfile>
+                    <releaseProfiles>release</releaseProfiles>
+                    <goals>deploy</goals>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>tidy-maven-plugin</artifactId>
+                <version>${maven.tidy.version}</version>
+                <executions>
+                    <execution>
+                        <id>validate</id>
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.sonatype.central</groupId>
+                <artifactId>central-publishing-maven-plugin</artifactId>
+                <version>${maven.sonatype.central.version}</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <publishingServerId>central</publishingServerId>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
     <repositories>
         <!-- EBI repo -->
@@ -196,22 +289,4 @@
             </snapshots>
         </repository>
     </repositories>
-
-    <distributionManagement>
-        <!-- EBI repo -->
-        <repository>
-            <id>pst-release</id>
-            <name>EBI Nexus Repository</name>
-            <url>https://www.ebi.ac.uk/Tools/maven/repos/content/repositories/pst-release</url>
-        </repository>
-        <!-- EBI SNAPSHOT repo -->
-        <snapshotRepository>
-            <uniqueVersion>false</uniqueVersion>
-            <id>pst-snapshots</id>
-            <name>EBI Nexus Snapshots Repository</name>
-            <url>https://www.ebi.ac.uk/Tools/maven/repos/content/repositories/pst-snapshots</url>
-        </snapshotRepository>
-    </distributionManagement>
-
-
 </project>
