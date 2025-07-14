@@ -6,7 +6,7 @@
     <artifactId>bom-parent</artifactId>
 
     <packaging>pom</packaging>
-    <version>1.0.0</version>
+    <version>1.0.1-SNAPSHOT</version>
     <name>Reactome BOM Parent</name>
 
     <modules>
@@ -17,16 +17,16 @@
     <distributionManagement>
         <!-- EBI repo -->
         <repository>
-            <id>pst-release</id>
-            <name>EBI Nexus Repository</name>
-            <url>https://www.ebi.ac.uk/Tools/maven/repos/content/repositories/pst-release</url>
+            <id>central</id>
+            <name>Sonatype Central Repository</name>
+            <url>https://repo1.maven.org/maven2/org/sonatype/central/</url>
         </repository>
         <!-- EBI SNAPSHOT repo -->
         <snapshotRepository>
             <uniqueVersion>false</uniqueVersion>
-            <id>pst-snapshots</id>
-            <name>EBI Nexus Snapshots Repository</name>
-            <url>https://www.ebi.ac.uk/Tools/maven/repos/content/repositories/pst-snapshots</url>
+            <id>central</id>
+            <name>Sonatype Central Snapshot repository</name>
+            <url>https://central.sonatype.com/repository/maven-snapshots/</url>
         </snapshotRepository>
     </distributionManagement>
 
