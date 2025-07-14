@@ -19,7 +19,7 @@
         <repository>
             <id>central</id>
             <name>Sonatype Central Repository</name>
-            <url>https://repo1.maven.org/maven2/org/sonatype/central/</url>
+            <url>https://ossrh-staging-api.central.sonatype.com/service/local/staging/deploy/maven2//</url>
         </repository>
         <!-- EBI SNAPSHOT repo -->
         <snapshotRepository>
