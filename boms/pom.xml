@@ -6,7 +6,7 @@
     <artifactId>bom-parent</artifactId>
 
     <packaging>pom</packaging>
-    <version>1.0.1-SNAPSHOT</version>
+    <version>1.0.0</version>
     <name>Reactome BOM Parent</name>
 
     <modules>
