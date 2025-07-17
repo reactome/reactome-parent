@@ -23,6 +23,12 @@
         <name>The European Bioinformatics Institute</name>
         <url>http://www.ebi.ac.uk/</url>
     </organization>
+    <licenses>
+        <license>
+            <name>The Apache Software License, Version 2.0</name>
+            <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
+        </license>
+    </licenses>
 
     <developers>
         <developer>
@@ -31,6 +37,12 @@
             <email>eragueneau@ebi.ac.uk</email>
         </developer>
     </developers>
+
+    <scm>
+        <connection>scm:git:git://github.com/reactome/reactome-parent.git</connection>
+        <developerConnection>scm:git:ssh://github.com:reactome/reactome-parent.git</developerConnection>
+        <url>https://github.com/reactome/reactome-parent/tree/main/boms/reactome-pwp-bom</url>
+    </scm>
 
     <properties>
         <pwp.scroller.version>1.1.4</pwp.scroller.version>
