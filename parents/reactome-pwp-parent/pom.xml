@@ -4,7 +4,7 @@
 
     <groupId>org.reactome.maven</groupId>
     <artifactId>reactome-pwp-parent</artifactId>
-    <version>1.0.4-SNAPSHOT</version>
+    <version>1.0.4</version>
     <packaging>pom</packaging>
 
     <name>Reactome PWP Parent</name>
@@ -198,6 +198,7 @@
 
     <build>
         <plugins>
+            <!-- Creates jar file containing source (*.java) files for the project-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-source-plugin</artifactId>
@@ -263,6 +264,7 @@
                 </configuration>
             </plugin>
 
+            <!-- Standardizes layout of pom.xml file -->
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>tidy-maven-plugin</artifactId>
@@ -278,6 +280,7 @@
                 </executions>
             </plugin>
 
+            <!-- Allows publishing of SNAPSHOTs and releases to Sonatype staging server for Maven Central -->
             <plugin>
                 <groupId>org.sonatype.central</groupId>
                 <artifactId>central-publishing-maven-plugin</artifactId>
