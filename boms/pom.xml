@@ -14,20 +14,40 @@
         <module>reactome-pwp-bom</module>
     </modules>
 
-    <distributionManagement>
-        <!-- EBI repo -->
-        <repository>
-            <id>central</id>
-            <name>Sonatype Central Repository</name>
-            <url>https://ossrh-staging-api.central.sonatype.com/service/local/staging/deploy/maven2//</url>
-        </repository>
-        <!-- EBI SNAPSHOT repo -->
-        <snapshotRepository>
-            <uniqueVersion>false</uniqueVersion>
-            <id>central</id>
-            <name>Sonatype Central Snapshot repository</name>
-            <url>https://central.sonatype.com/repository/maven-snapshots/</url>
-        </snapshotRepository>
-    </distributionManagement>
+    <properties>
+        <maven.gpg.version>3.2.8</maven.gpg.version>
+        <maven.sonatype.central.version>0.8.0</maven.sonatype.central.version>
+    </properties>
 
+    <build>
+        <plugins>
+            <!-- Signs deployed jar, source jar, and JavaDoc jar with GPG -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-gpg-plugin</artifactId>
+                <version>${maven.gpg.version}</version>
+                <executions>
+                    <execution>
+                        <id>sign-artifacts</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>sign</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+
+            <!-- Allows publishing of SNAPSHOTs and releases to Sonatype staging server for Maven Central -->
+            <plugin>
+                <groupId>org.sonatype.central</groupId>
+                <artifactId>central-publishing-maven-plugin</artifactId>
+                <version>${maven.sonatype.central.version}</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <publishingServerId>central</publishingServerId>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>
