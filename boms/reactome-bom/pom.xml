@@ -33,7 +33,7 @@
     <properties>
         <!--             Internal Library            -->
 
-        <reactome.reactome-base.version>2.2.3-SNAPSHOT</reactome.reactome-base.version>
+        <reactome.reactome-base.version>2.2.4-SNAPSHOT</reactome.reactome-base.version>
         <reactome.graph-core.version>3.0.0-SNAPSHOT</reactome.graph-core.version>
         <reactome.analysis-core.version>3.6.0-SNAPSHOT</reactome.analysis-core.version>
         <reactome.diagram-reader.version>1.2.5</reactome.diagram-reader.version>
