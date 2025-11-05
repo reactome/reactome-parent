@@ -1,5 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
@@ -10,11 +10,10 @@
 
     <groupId>org.reactome.maven</groupId>
     <artifactId>reactome-pwp-bom</artifactId>
-
-    <packaging>pom</packaging>
     <version>1.0.4</version>
-    <name>Reactome PWP BOM</name>
+    <packaging>pom</packaging>
 
+    <name>Reactome PWP BOM</name>
     <description>
         Reactome PWP BOM aims to centralise dependencies management for Pathway Portal
     </description>
@@ -35,6 +34,15 @@
             <id>eragueneau</id>
             <name>Eliot Ragueneau</name>
             <email>eragueneau@ebi.ac.uk</email>
+            <organization>The European Bioinformatics Institute</organization>
+            <organizationUrl>https://www.ebi.ac.uk/</organizationUrl>
+        </developer>
+        <developer>
+            <id>cqgong</id>
+            <name>Chuqiao Gong</name>
+            <email>cgong@ebi.ac.uk</email>
+            <organization>The European Bioinformatics Institute</organization>
+            <organizationUrl>https://www.ebi.ac.uk/</organizationUrl>
         </developer>
     </developers>
 
@@ -64,6 +72,7 @@
         <pwp.browser.version>3.9.5</pwp.browser.version>
 
     </properties>
+
     <dependencyManagement>
         <dependencies>
             <!--      ABSTRACT UI      -->
@@ -163,7 +172,6 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
-
 
     <repositories>
         <!-- EBI repo -->
