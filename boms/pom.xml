@@ -1,18 +1,49 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.reactome.maven</groupId>
     <artifactId>bom-parent</artifactId>
-
-    <packaging>pom</packaging>
     <version>1.0.0</version>
+    <packaging>pom</packaging>
+
     <name>Reactome BOM Parent</name>
+    <description>Reactome BOM aims to centralise dependencies management</description>
+    <url>https://github.com/reactome/reactome-parent</url>
+    <licenses>
+        <license>
+            <name>The Apache Software License, Version 2.0</name>
+            <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <id>eragueneau</id>
+            <name>Eliot Ragueneau</name>
+            <email>eragueneau@ebi.ac.uk</email>
+            <organization>The European Bioinformatics Institute</organization>
+            <organizationUrl>https://www.ebi.ac.uk/</organizationUrl>
+        </developer>
+        <developer>
+            <id>cqgong</id>
+            <name>Chuqiao Gong</name>
+            <email>cgong@ebi.ac.uk</email>
+            <organization>The European Bioinformatics Institute</organization>
+            <organizationUrl>https://www.ebi.ac.uk/</organizationUrl>
+        </developer>
+    </developers>
 
     <modules>
         <module>reactome-bom</module>
         <module>reactome-pwp-bom</module>
     </modules>
+
+    <scm>
+        <connection>scm:git:git://github.com/reactome/reactome-parent.git</connection>
+        <developerConnection>scm:git:ssh://github.com:reactome/reactome-parent.git</developerConnection>
+        <url>https://github.com/reactome/reactome-parent/tree/main/boms/</url>
+    </scm>
 
     <properties>
         <maven.gpg.version>3.2.8</maven.gpg.version>
