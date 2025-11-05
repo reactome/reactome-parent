@@ -1,25 +1,61 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.reactome.maven</groupId>
     <artifactId>bom-parent</artifactId>
-
-    <packaging>pom</packaging>
     <version>1.0.0</version>
+    <packaging>pom</packaging>
+
     <name>Reactome BOM Parent</name>
+    <description>Reactome BOM aims to centralise dependencies management</description>
+    <url>https://github.com/reactome/reactome-parent</url>
+    <licenses>
+        <license>
+            <name>The Apache Software License, Version 2.0</name>
+            <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <id>eragueneau</id>
+            <name>Eliot Ragueneau</name>
+            <email>eragueneau@ebi.ac.uk</email>
+            <organization>The European Bioinformatics Institute</organization>
+            <organizationUrl>https://www.ebi.ac.uk/</organizationUrl>
+        </developer>
+        <developer>
+            <id>cqgong</id>
+            <name>Chuqiao Gong</name>
+            <email>cgong@ebi.ac.uk</email>
+            <organization>The European Bioinformatics Institute</organization>
+            <organizationUrl>https://www.ebi.ac.uk/</organizationUrl>
+        </developer>
+    </developers>
 
     <modules>
         <module>reactome-bom</module>
         <module>reactome-pwp-bom</module>
     </modules>
 
+    <scm>
+        <connection>scm:git:git://github.com/reactome/reactome-parent.git</connection>
+        <developerConnection>scm:git:ssh://github.com:reactome/reactome-parent.git</developerConnection>
+        <url>https://github.com/reactome/reactome-parent/tree/main/boms/</url>
+    </scm>
     <distributionManagement>
         <!-- EBI repo -->
         <repository>
             <id>pst-release</id>
             <name>EBI Nexus Repository</name>
             <url>https://www.ebi.ac.uk/Tools/maven/repos/content/repositories/pst-release</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
         </repository>
         <!-- EBI SNAPSHOT repo -->
         <snapshotRepository>
@@ -27,7 +63,80 @@
             <id>pst-snapshots</id>
             <name>EBI Nexus Snapshots Repository</name>
             <url>https://www.ebi.ac.uk/Tools/maven/repos/content/repositories/pst-snapshots</url>
+            <releases>
+                <enabled>false</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
         </snapshotRepository>
     </distributionManagement>
 
+    <properties>
+        <maven.gpg.version>3.2.8</maven.gpg.version>
+        <maven.sonatype.central.version>0.8.0</maven.sonatype.central.version>
+        <maven.tidy.version>1.4.0</maven.tidy.version>
+    </properties>
+
+    <build>
+        <plugins>
+            <!-- Signs deployed jar, source jar, and JavaDoc jar with GPG -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-gpg-plugin</artifactId>
+                <version>${maven.gpg.version}</version>
+                <executions>
+                    <execution>
+                        <id>sign-artifacts</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>sign</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!-- Standardizes layout of pom.xml file -->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>tidy-maven-plugin</artifactId>
+                <version>${maven.tidy.version}</version>
+                <executions>
+                    <execution>
+                        <id>validate</id>
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+    <!-- profile to deploy to Sonatype; invoked by "mvn deploy -Dsonatype-deploy=true" -->
+    <profiles>
+        <profile>
+            <id>sonatype-deploy</id>
+            <activation>
+                <property>
+                    <name>sonatype-deploy</name>
+                    <value>true</value>
+                </property>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.sonatype.central</groupId>
+                        <artifactId>central-publishing-maven-plugin</artifactId>
+                        <version>0.9.0</version>
+                        <extensions>true</extensions>
+                        <configuration>
+                            <publishingServerId>central</publishingServerId>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 </project>
