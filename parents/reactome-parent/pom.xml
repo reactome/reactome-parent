@@ -51,7 +51,6 @@
         <developerConnection>scm:git:ssh://github.com:reactome/reactome-parent.git</developerConnection>
         <url>https://github.com/reactome/reactome-parent/tree/main/parents/reactome-parent</url>
     </scm>
-
     <distributionManagement>
         <!-- EBI repo -->
         <repository>
