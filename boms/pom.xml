@@ -48,6 +48,7 @@
     <properties>
         <maven.gpg.version>3.2.8</maven.gpg.version>
         <maven.sonatype.central.version>0.8.0</maven.sonatype.central.version>
+        <maven.tidy.version>1.4.0</maven.tidy.version>
     </properties>
 
     <build>
@@ -78,6 +79,22 @@
                 <configuration>
                     <publishingServerId>central</publishingServerId>
                 </configuration>
+            </plugin>
+
+            <!-- Standardizes layout of pom.xml file -->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>tidy-maven-plugin</artifactId>
+                <version>${maven.tidy.version}</version>
+                <executions>
+                    <execution>
+                        <id>validate</id>
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
