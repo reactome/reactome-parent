@@ -96,18 +96,6 @@
                 </executions>
             </plugin>
 
-
-            <!-- Allows publishing of SNAPSHOTs and releases to Sonatype staging server for Maven Central -->
-            <plugin>
-                <groupId>org.sonatype.central</groupId>
-                <artifactId>central-publishing-maven-plugin</artifactId>
-                <version>${maven.sonatype.central.version}</version>
-                <extensions>true</extensions>
-                <configuration>
-                    <publishingServerId>central</publishingServerId>
-                </configuration>
-            </plugin>
-
             <!-- Standardizes layout of pom.xml file -->
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
@@ -125,4 +113,30 @@
             </plugin>
         </plugins>
     </build>
+
+    <!-- profile to deploy to Sonatype; invoked by "mvn deploy -Dsonatype-deploy=true" -->
+    <profiles>
+        <profile>
+            <id>sonatype-deploy</id>
+            <activation>
+                <property>
+                    <name>sonatype-deploy</name>
+                    <value>true</value>
+                </property>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.sonatype.central</groupId>
+                        <artifactId>central-publishing-maven-plugin</artifactId>
+                        <version>0.9.0</version>
+                        <extensions>true</extensions>
+                        <configuration>
+                            <publishingServerId>central</publishingServerId>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 </project>
