@@ -77,7 +77,7 @@
         <java.version>11</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-        <reactome.reactome-bom.version>1.0.6</reactome.reactome-bom.version>
+        <reactome.reactome-bom.version>1.0.5</reactome.reactome-bom.version>
         <reactome.reactome-pwp-bom.version>1.0.4</reactome.reactome-pwp-bom.version>
 
         <!--scroller-->
@@ -112,6 +112,8 @@
         <!--rhea-->
         <!--shared dependencies-->
 
+        <reactome.reactome-utils.version>1.1.5</reactome.reactome-utils.version>
+
         <!--maven build and plugins-->
         <maven.jar.version>3.2.0</maven.jar.version>
         <gwt.maven.version>1.0-rc-6</gwt.maven.version>
@@ -145,6 +147,56 @@
                 <version>${reactome.reactome-pwp-bom.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>com.google.gwt</groupId>
+                <artifactId>gwt-user</artifactId>
+                <version>${gwtVersion}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.google.gwt</groupId>
+                <artifactId>gwt-codeserver</artifactId>
+                <version>${gwtVersion}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.eclipse.jetty</groupId>
+                        <artifactId>jetty-webapp</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.eclipse.jetty</groupId>
+                        <artifactId>jetty-servlets</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.eclipse.jetty</groupId>
+                        <artifactId>jetty-annotations</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.eclipse.jetty</groupId>
+                        <artifactId>apache-jsp</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.eclipse.jetty.websocket</groupId>
+                        <artifactId>websocket-client</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.eclipse.jetty</groupId>
+                        <artifactId>apache-jsp</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+
+            <dependency>
+                <groupId>com.google.gwt</groupId>
+                <artifactId>gwt-servlet</artifactId>
+                <version>${gwtVersion}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.reactome.server.utils</groupId>
+                <artifactId>reactome-utils</artifactId>
+                <version>${reactome.reactome-utils.version}</version>
             </dependency>
 
             <dependency>
