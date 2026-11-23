@@ -1,0 +1,59 @@
+name: reactome-parent
+
+# Every POM built on each pull request and push, unsigned. On a version tag (v*), signed and
+# uploaded to Maven Central through Sonatype's Central Portal, where the upload waits until a
+# person publishes it there (central-publishing-maven-plugin's autoPublish, off by default).
+# The publish job runs in the `maven-central` environment, so GitHub asks a person to approve
+# it, and the Sonatype token and the signing key are that environment's secrets, never on
+# anyone's machine.
+
+on:
+    pull_request:
+    push:
+        branches: [main]
+        tags: ['v*']
+
+permissions:
+    contents: read
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v7
+            - uses: actions/setup-java@v6
+              with:
+                  distribution: temurin
+                  java-version: '17'
+                  cache: maven
+            - name: Every POM, unsigned
+              run: |
+                  for pom in boms/pom.xml parents/reactome-parent/pom.xml; do
+                      mvn -B -ntp -Dgpg.skip -f "$pom" install
+                  done
+
+    publish:
+        if: startsWith(github.ref, 'refs/tags/v')
+        needs: build
+        runs-on: ubuntu-latest
+        environment: maven-central
+        steps:
+            - uses: actions/checkout@v7
+            - uses: actions/setup-java@v6
+              with:
+                  distribution: temurin
+                  java-version: '17'
+                  server-id: central
+                  server-username: MAVEN_CENTRAL_USERNAME
+                  server-password: MAVEN_CENTRAL_PASSWORD
+                  gpg-private-key: ${{ secrets.MAVEN_GPG_PRIVATE_KEY }}
+                  gpg-passphrase: MAVEN_GPG_PASSPHRASE
+            - name: Signed, and uploaded to the Central Portal
+              env:
+                  MAVEN_CENTRAL_USERNAME: ${{ secrets.MAVEN_CENTRAL_USERNAME }}
+                  MAVEN_CENTRAL_PASSWORD: ${{ secrets.MAVEN_CENTRAL_PASSWORD }}
+                  MAVEN_GPG_PASSPHRASE: ${{ secrets.MAVEN_GPG_PASSPHRASE }}
+              run: |
+                  for pom in boms/pom.xml parents/reactome-parent/pom.xml; do
+                      mvn -B -ntp -Dsonatype-deploy=true -f "$pom" deploy
+                  done

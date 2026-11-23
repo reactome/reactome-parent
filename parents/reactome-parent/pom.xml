@@ -10,7 +10,7 @@
 
     <groupId>org.reactome.maven</groupId>
     <artifactId>reactome-parent</artifactId>
-    <version>1.0.6</version>
+    <version>1.0.7</version>
     <packaging>pom</packaging>
 
     <name>Reactome Parent</name>
@@ -229,6 +229,7 @@
         <maven.gpg.version>3.2.8</maven.gpg.version>
         <maven.tidy.version>1.4.0</maven.tidy.version>
         <maven.sonatype.central.version>0.8.0</maven.sonatype.central.version>
+        <maven.license.version>2.10.0</maven.license.version>
     </properties>
 
     <dependencyManagement>
@@ -736,6 +737,48 @@
     </repositories>
 
     <build>
+        <pluginManagement>
+            <plugins>
+                <!--
+                    The licence of every dependency a jar ships with (compile and runtime scope),
+                    checked at verify: a child turns it on by naming the plugin in its own build.
+                    Allowed, as the Apache Software Foundation's categories A and B: Apache-2.0,
+                    MIT, BSD, and EPL and MPL as binary dependencies. A dependency under several
+                    licences passes if one of them is allowed; one under none of these fails the
+                    build, as does one that declares no licence.
+                -->
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>license-maven-plugin</artifactId>
+                    <version>${maven.license.version}</version>
+                    <executions>
+                        <execution>
+                            <id>dependency-licences</id>
+                            <phase>verify</phase>
+                            <goals>
+                                <goal>add-third-party</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                    <configuration>
+                        <excludedScopes>test,provided,system</excludedScopes>
+                        <failOnMissing>true</failOnMissing>
+                        <failOnBlacklist>true</failOnBlacklist>
+                        <includedLicenses>Apache-2.0|MIT|BSD-2-Clause|BSD-3-Clause|EPL-1.0|EPL-2.0|MPL-1.1|MPL-2.0</includedLicenses>
+                        <licenseMerges>
+                            <licenseMerge>Apache-2.0|Apache License, Version 2.0|The Apache Software License, Version 2.0|The Apache License, Version 2.0|Apache License, Version 2|Apache License 2.0|Apache 2.0|Apache 2</licenseMerge>
+                            <licenseMerge>MIT|MIT License|The MIT License|MIT-0</licenseMerge>
+                            <licenseMerge>BSD-2-Clause|BSD 2-Clause License|The BSD 2-Clause License</licenseMerge>
+                            <licenseMerge>BSD-3-Clause|BSD 3-Clause License|The BSD 3-Clause License|The New BSD License|New BSD License|BSD License 3</licenseMerge>
+                            <licenseMerge>EPL-1.0|Eclipse Public License - v 1.0|Eclipse Public License 1.0|EPL 1.0</licenseMerge>
+                            <licenseMerge>EPL-2.0|Eclipse Public License - v 2.0|Eclipse Public License v2.0|Eclipse Public License 2.0|EPL 2.0</licenseMerge>
+                            <licenseMerge>MPL-1.1|MPL 1.1|Mozilla Public License 1.1</licenseMerge>
+                            <licenseMerge>MPL-2.0|MPL 2.0|Mozilla Public License 2.0|Mozilla Public License, Version 2.0</licenseMerge>
+                        </licenseMerges>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -763,6 +806,11 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
                 <version>${maven.javadoc.version}</version>
+                <!-- Maven Central needs a javadoc jar; Java 17's doclint fails the build on old
+                     comments' HTML (an author's address in <...>), so it is made without it -->
+                <configuration>
+                    <doclint>none</doclint>
+                </configuration>
                 <executions>
                     <execution>
                         <id>attach-javadocs</id>
