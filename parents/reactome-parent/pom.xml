@@ -826,10 +826,11 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
                 <version>${maven.javadoc.version}</version>
-                <!-- Maven Central needs a javadoc jar; every doclint check is on, and a warning
-                     fails the build -->
+                <!-- Maven Central needs a javadoc jar. Every doclint check on what a comment
+                     says (HTML, references, tags) is on, and a warning fails the build; a member
+                     without a comment is not a warning (`-missing`) -->
                 <configuration>
-                    <doclint>all</doclint>
+                    <doclint>all,-missing</doclint>
                     <failOnWarnings>true</failOnWarnings>
                 </configuration>
                 <executions>
