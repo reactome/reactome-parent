@@ -1,12 +1,14 @@
 # Dependency updates, weekly. Minor and patch updates come grouped in one pull request;
-# a major one comes on its own, since it may need code changes. CI (the build, the
-# licence check, the strict compile) is what says an update is safe.
+# a major one comes on its own. This repository's CI only builds the POMs: whether an
+# update is safe is shown when a library moves to the new parent and its own CI (the
+# strict build, the licence check, its tests) passes.
 version: 2
 updates:
   - package-ecosystem: maven
+    # /boms builds both BOMs as modules. reactome-pwp-parent is left out: its users are
+    # to be archived.
     directories:
       - /boms
-      - /boms/reactome-bom
       - /parents/reactome-parent
     schedule:
       interval: weekly
@@ -14,6 +16,15 @@ updates:
     groups:
       minor-and-patch:
         update-types: [minor, patch]
+    ignore:
+      # Pinned on purpose; the POM says why.
+      - dependency-name: org.reflections:reflections
+        versions: ['>= 0.10']
+      - dependency-name: ch.qos.logback:*
+        versions: ['>= 1.3']
+      # A new formatter version reformats code: every library then needs a formatting
+      # commit, so it is moved by hand.
+      - dependency-name: com.palantir.javaformat:*
   - package-ecosystem: github-actions
     directory: /
     schedule:

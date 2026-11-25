@@ -228,6 +228,7 @@
         <maven.war.version>2.6</maven.war.version>
         <maven.gpg.version>3.2.8</maven.gpg.version>
         <maven.tidy.version>1.4.0</maven.tidy.version>
+        <maven.enforcer.version>3.7.0</maven.enforcer.version>
         <spotless.version>3.12.0</spotless.version>
         <palantir-java-format.version>2.103.0</palantir-java-format.version>
         <maven.sonatype.central.version>0.8.0</maven.sonatype.central.version>
@@ -744,7 +745,12 @@
                 <!--
                     The compiler, as strict as the TypeScript side: every lint (but path, which is
                     about jars' manifests rather than the code) and any warning fails the build.
-                    A child that configures the compiler itself keeps these unless it overrides them.
+                    A child that configures the compiler itself keeps these unless it overrides them;
+                    one that adds arguments uses combine.children="append". `release` rather than
+                    source/target, whose pairing javac itself warns about: so `java.version` is a
+                    release number (11, 17), never Spring Boot's spelling 1.8. A child whose AspectJ
+                    plugin compiles the sources leaves javac nothing to compile, and so nothing to
+                    check: it weaves the compiled classes instead, as graph-core does.
                 -->
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
@@ -870,6 +876,33 @@
                     <releaseProfiles>release</releaseProfiles>
                     <goals>deploy</goals>
                 </configuration>
+            </plugin>
+
+            <!--
+                Built with JDK 17, the JDK CI uses: Spotless needs 17 to run, JDK 11's doclint and
+                JDK 21's serial lint judge the same code differently. What the jar runs on is
+                `java.version`.
+            -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-enforcer-plugin</artifactId>
+                <version>${maven.enforcer.version}</version>
+                <executions>
+                    <execution>
+                        <id>build-jdk</id>
+                        <goals>
+                            <goal>enforce</goal>
+                        </goals>
+                        <configuration>
+                            <rules>
+                                <requireJavaVersion>
+                                    <version>[17,18)</version>
+                                    <message>Build with JDK 17 (CI's): the strict checks are set for it.</message>
+                                </requireJavaVersion>
+                            </rules>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
 
             <!--
