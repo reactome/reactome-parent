@@ -44,6 +44,16 @@
             <organization>Ontario Institute for Cancer Research</organization>
             <organizationUrl>https://oicr.on.ca/</organizationUrl>
         </developer>
+        <developer>
+            <id>eragueneau</id>
+            <name>Eliot Ragueneau</name>
+            <email>eragueneau@ebi.ac.uk</email>
+            <organization>The European Bioinformatics Institute</organization>
+            <organizationUrl>https://www.ebi.ac.uk/</organizationUrl>
+            <roles>
+                <role>alumni</role>
+            </roles>
+        </developer>
     </developers>
 
     <scm>
