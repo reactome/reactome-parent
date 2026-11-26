@@ -26,6 +26,12 @@ jobs:
                   distribution: temurin
                   java-version: '17'
                   cache: maven
+            # A POM on Central is there for good, and whoever uses it inherits its repositories.
+            # EBI's Nexus is going away, so no published POM may send a build there.
+            - name: No published POM names a repository of its own
+              run: |
+                  ! grep -nE '<(repositories|pluginRepositories|distributionManagement)>|ebi\.ac\.uk/Tools/maven' \
+                      boms/pom.xml boms/*/pom.xml parents/reactome-parent/pom.xml
             - name: Every POM, unsigned
               run: |
                   for pom in boms/pom.xml parents/reactome-parent/pom.xml; do
