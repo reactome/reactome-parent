@@ -52,6 +52,13 @@ jobs:
                   EOF
                   mvn -B -ntp -q help:effective-pom -Doutput="$RUNNER_TEMP/child/effective.xml" -f "$RUNNER_TEMP/child/pom.xml"
                   ! grep -nE '<version>[^<]*\$\{' "$RUNNER_TEMP/child/effective.xml"
+            # reactome-parent imports the reactome-bom this repository publishes with it.
+            - name: reactome-parent imports this reactome-bom's version
+              run: |
+                  bom=$(mvn -B -ntp -q help:evaluate -Dexpression=project.version -DforceStdout -N -f boms/reactome-bom/pom.xml)
+                  imported=$(mvn -B -ntp -q help:evaluate -Dexpression=reactome.reactome-bom.version -DforceStdout -N -f parents/reactome-parent/pom.xml)
+                  echo "reactome-bom $bom; reactome-parent imports $imported"
+                  test "$bom" = "$imported"
             # A dependency joins a published POM only once its version is on Maven Central.
             - name: Every version the published POMs manage is on Maven Central
               run: |
@@ -86,7 +93,13 @@ jobs:
                   MAVEN_CENTRAL_USERNAME: ${{ secrets.MAVEN_CENTRAL_USERNAME }}
                   MAVEN_CENTRAL_PASSWORD: ${{ secrets.MAVEN_CENTRAL_PASSWORD }}
                   MAVEN_GPG_PASSPHRASE: ${{ secrets.MAVEN_GPG_PASSPHRASE }}
+              # A BOM already on Central is not uploaded again (Central refuses it): see
+              # boms-to-publish.sh. reactome-parent's version is the tag's, so it is always new.
               run: |
-                  for pom in boms/pom.xml parents/reactome-parent/pom.xml; do
-                      mvn -B -ntp -Dsonatype-deploy=true -f "$pom" deploy
-                  done
+                  boms=$(.github/boms-to-publish.sh)
+                  if [ -n "$boms" ]; then
+                      mvn -B -ntp -Dsonatype-deploy=true -f boms/pom.xml -pl "$boms" deploy
+                  else
+                      echo "Both BOMs' versions are on Central already"
+                  fi
+                  mvn -B -ntp -Dsonatype-deploy=true -f parents/reactome-parent/pom.xml deploy

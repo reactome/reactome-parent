@@ -10,6 +10,10 @@
     <name>Reactome BOM Parent</name>
     <description>Reactome BOM aims to centralise dependencies management</description>
     <url>https://github.com/reactome/reactome-parent</url>
+    <organization>
+        <name>Reactome</name>
+        <url>https://reactome.org/</url>
+    </organization>
     <licenses>
         <license>
             <name>The Apache Software License, Version 2.0</name>
