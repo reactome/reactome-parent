@@ -35,7 +35,15 @@
         <developer>
             <id>eragueneau</id>
             <name>Eliot Ragueneau</name>
-            <email>eragueneau@ebi.ac.uk</email>
+            <organization>The European Bioinformatics Institute</organization>
+            <organizationUrl>https://www.ebi.ac.uk/</organizationUrl>
+            <roles>
+                <role>alumni</role>
+            </roles>
+        </developer>
+        <developer>
+            <id>cqgong</id>
+            <name>Chuqiao Gong</name>
             <organization>The European Bioinformatics Institute</organization>
             <organizationUrl>https://www.ebi.ac.uk/</organizationUrl>
             <roles>
