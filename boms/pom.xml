@@ -40,14 +40,13 @@
     </modules>
 
     <scm>
-        <connection>scm:git:git://github.com/reactome/reactome-parent.git</connection>
-        <developerConnection>scm:git:ssh://github.com:reactome/reactome-parent.git</developerConnection>
+        <connection>scm:git:https://github.com/reactome/reactome-parent.git</connection>
+        <developerConnection>scm:git:ssh://git@github.com/reactome/reactome-parent.git</developerConnection>
         <url>https://github.com/reactome/reactome-parent/tree/main/boms/</url>
     </scm>
 
     <properties>
         <maven.gpg.version>3.2.8</maven.gpg.version>
-        <maven.sonatype.central.version>0.8.0</maven.sonatype.central.version>
         <maven.tidy.version>1.4.0</maven.tidy.version>
     </properties>
 

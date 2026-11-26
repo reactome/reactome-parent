@@ -20,7 +20,7 @@
     <url>https://github.com/reactome/reactome-parent</url>
     <organization>
         <name>The European Bioinformatics Institute</name>
-        <url>http://www.ebi.ac.uk/</url>
+        <url>https://www.ebi.ac.uk/</url>
     </organization>
     <licenses>
         <license>
@@ -47,8 +47,8 @@
     </developers>
 
     <scm>
-        <connection>scm:git:git://github.com/reactome/reactome-parent.git</connection>
-        <developerConnection>scm:git:ssh://github.com:reactome/reactome-parent.git</developerConnection>
+        <connection>scm:git:https://github.com/reactome/reactome-parent.git</connection>
+        <developerConnection>scm:git:ssh://git@github.com/reactome/reactome-parent.git</developerConnection>
         <url>https://github.com/reactome/reactome-parent/tree/main/boms/reactome-pwp-bom</url>
     </scm>
 

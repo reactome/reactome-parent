@@ -45,8 +45,8 @@
     </developers>
 
     <scm>
-        <connection>scm:git:git://github.com/reactome/reactome-parent.git</connection>
-        <developerConnection>scm:git:ssh://github.com:reactome/reactome-parent.git</developerConnection>
+        <connection>scm:git:https://github.com/reactome/reactome-parent.git</connection>
+        <developerConnection>scm:git:ssh://git@github.com/reactome/reactome-parent.git</developerConnection>
         <url>https://github.com/reactome/reactome-parent/tree/main/boms/reactome-bom</url>
     </scm>
 
@@ -219,13 +219,13 @@
             <dependency>
                 <groupId>org.reactome.server.service</groupId>
                 <artifactId>popular-pathways</artifactId>
-                <version>${reactome.popular.pathways.version}</version>
+                <version>${reactome.popular-pathways.version}</version>
             </dependency>
 
             <dependency>
                 <groupId>org.reactome.server</groupId>
                 <artifactId>restfulapi</artifactId>
-                <version>${reactome.restful.api.version}</version>
+                <version>${reactome.restful-api.version}</version>
             </dependency>
 
             <!--             Release Pipeline            -->
