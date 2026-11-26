@@ -76,7 +76,11 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
         <reactome.reactome-bom.version>1.0.7</reactome.reactome-bom.version>
-        <reactome.reactome-pwp-bom.version>1.0.5</reactome.reactome-pwp-bom.version>
+
+        <!-- Strict by default: a compiler or javadoc warning fails the build. A child that
+             cannot be clean yet sets this to false in its own properties (or -Dreactome.strict=false),
+             and still sees every warning. -->
+        <reactome.strict>true</reactome.strict>
 
         <!--graph core-->
         <logback.version>1.2.11</logback.version> <!--Do not update logback to prevent no log output-->
@@ -199,7 +203,6 @@
         <!--interaction exporter-->
         <!--shared dependencies-->
 
-
         <!--maven build and plugins-->
         <maven.compiler.version>3.16.0</maven.compiler.version>
         <maven.surefire.version>3.0.0-M5</maven.surefire.version>
@@ -233,14 +236,6 @@
                 <groupId>org.reactome.maven</groupId>
                 <artifactId>reactome-bom</artifactId>
                 <version>${reactome.reactome-bom.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-
-            <dependency>
-                <groupId>org.reactome.maven</groupId>
-                <artifactId>reactome-pwp-bom</artifactId>
-                <version>${reactome.reactome-pwp-bom.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -326,12 +321,6 @@
             </dependency>
 
             <dependency>
-                <groupId>org.sbgn</groupId>
-                <artifactId>libsbgn</artifactId>
-                <version>${sbgn.version}</version>
-            </dependency>
-
-            <dependency>
                 <groupId>commons-io</groupId>
                 <artifactId>commons-io</artifactId>
                 <version>${commons.io.version}</version>
@@ -371,13 +360,6 @@
                 <groupId>org.glassfish.jaxb</groupId>
                 <artifactId>jaxb-runtime</artifactId>
                 <version>${jaxb.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>com.aspose</groupId>
-                <artifactId>aspose-slides</artifactId>
-                <version>${aspose.version}</version>
-                <classifier>jdk16</classifier>
             </dependency>
 
             <dependency>
@@ -442,18 +424,6 @@
                 <groupId>com.fasterxml.jackson.core</groupId>
                 <artifactId>jackson-databind</artifactId>
                 <version>${jackson.databind.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>uk.ac.ebi.enfin.mi.cluster</groupId>
-                <artifactId>micluster</artifactId>
-                <version>${micluster.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>psidev.psi.mi</groupId>
-                <artifactId>psimitab</artifactId>
-                <version>${psimitab.version}</version>
             </dependency>
 
             <dependency>
@@ -693,12 +663,6 @@
                 <version>${commons-math3.version}</version>
             </dependency>
 
-            <dependency>
-                <groupId>org.reactome.export</groupId>
-                <artifactId>pathwayExchange</artifactId>
-                <version>${pathway.exchange.version}</version>
-            </dependency>
-
         </dependencies>
     </dependencyManagement>
 
@@ -722,7 +686,7 @@
                     <configuration>
                         <release>${java.version}</release>
                         <showWarnings>true</showWarnings>
-                        <failOnWarning>true</failOnWarning>
+                        <failOnWarning>${reactome.strict}</failOnWarning>
                         <compilerArgs>
                             <arg>-Xlint:all,-path</arg>
                         </compilerArgs>
@@ -800,7 +764,7 @@
                      without a comment is not a warning (`-missing`) -->
                 <configuration>
                     <doclint>all,-missing</doclint>
-                    <failOnWarnings>true</failOnWarnings>
+                    <failOnWarnings>${reactome.strict}</failOnWarnings>
                 </configuration>
                 <executions>
                     <execution>
@@ -842,9 +806,9 @@
             </plugin>
 
             <!--
-                Built with JDK 17, the JDK CI uses: Spotless needs 17 to run, JDK 11's doclint and
-                JDK 21's serial lint judge the same code differently. What the jar runs on is
-                `java.version`.
+                Built with JDK 17 or newer: Spotless needs 17 to run. CI builds with 17; a newer JDK's
+                lint may warn about more (21's serial lint does), which fails a strict build. What the
+                jar runs on is `java.version`.
             -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -859,8 +823,8 @@
                         <configuration>
                             <rules>
                                 <requireJavaVersion>
-                                    <version>[17,18)</version>
-                                    <message>Build with JDK 17 (CI's): the strict checks are set for it.</message>
+                                    <version>[17,)</version>
+                                    <message>Build with JDK 17 or newer: Spotless needs 17.</message>
                                 </requireJavaVersion>
                             </rules>
                         </configuration>

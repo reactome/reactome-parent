@@ -54,7 +54,6 @@
 
     <modules>
         <module>reactome-bom</module>
-        <module>reactome-pwp-bom</module>
     </modules>
 
     <scm>

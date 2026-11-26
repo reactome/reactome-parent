@@ -52,6 +52,11 @@ jobs:
                   EOF
                   mvn -B -ntp -q help:effective-pom -Doutput="$RUNNER_TEMP/child/effective.xml" -f "$RUNNER_TEMP/child/pom.xml"
                   ! grep -nE '<version>[^<]*\$\{' "$RUNNER_TEMP/child/effective.xml"
+            # A dependency joins a published POM only once its version is on Maven Central.
+            - name: Every version the published POMs manage is on Maven Central
+              run: |
+                  python3 .github/managed-on-central.py "$RUNNER_TEMP/child/effective.xml" \
+                      boms/reactome-bom/pom.xml parents/reactome-parent/pom.xml
 
     publish:
         if: startsWith(github.ref, 'refs/tags/v')

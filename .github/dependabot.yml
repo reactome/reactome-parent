@@ -5,8 +5,8 @@
 version: 2
 updates:
   - package-ecosystem: maven
-    # /boms builds both BOMs as modules. reactome-pwp-parent is left out: its users are
-    # to be archived.
+    # /boms builds reactome-bom. reactome-pwp-parent and reactome-pwp-bom are left out:
+    # their users are to be archived.
     directories:
       - /boms
       - /parents/reactome-parent
