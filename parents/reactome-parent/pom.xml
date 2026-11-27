@@ -172,7 +172,7 @@
         <glassfish.version>2.2</glassfish.version>
 
         <!--disease-digester-->
-        <mybatis-spring-boot-starter.version>2.2.2</mybatis-spring-boot-starter.version>
+        <mybatis-spring-boot-starter.version>4.1.0</mybatis-spring-boot-starter.version>
         <hikari.version>5.0.1</hikari.version>
 
         <!--popular-pathways-->
