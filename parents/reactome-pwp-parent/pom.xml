@@ -25,53 +25,44 @@
 
     <developers>
         <developer>
+            <id>adamjohnwright</id>
+            <name>Adam Wright</name>
+            <email>awright@oicr.on.ca</email>
+            <organization>Ontario Institute for Cancer Research</organization>
+            <organizationUrl>https://oicr.on.ca/</organizationUrl>
+        </developer>
+        <developer>
+            <id>jweiser</id>
+            <name>Joel Weiser</name>
+            <email>jweiser@oicr.on.ca</email>
+            <organization>Ontario Institute for Cancer Research</organization>
+            <organizationUrl>https://oicr.on.ca/</organizationUrl>
+        </developer>
+        <developer>
             <id>eragueneau</id>
             <name>Eliot Ragueneau</name>
-            <email>eragueneau@ebi.ac.uk</email>
             <organization>The European Bioinformatics Institute</organization>
             <organizationUrl>https://www.ebi.ac.uk/</organizationUrl>
+            <roles>
+                <role>alumni</role>
+            </roles>
         </developer>
         <developer>
             <id>cqgong</id>
             <name>Chuqiao Gong</name>
-            <email>cgong@ebi.ac.uk</email>
             <organization>The European Bioinformatics Institute</organization>
             <organizationUrl>https://www.ebi.ac.uk/</organizationUrl>
+            <roles>
+                <role>alumni</role>
+            </roles>
         </developer>
     </developers>
 
     <scm>
-        <connection>scm:git:git://github.com/reactome/reactome-parent.git</connection>
-        <developerConnection>scm:git:ssh://github.com:reactome/reactome-parent.git</developerConnection>
+        <connection>scm:git:https://github.com/reactome/reactome-parent.git</connection>
+        <developerConnection>scm:git:ssh://git@github.com/reactome/reactome-parent.git</developerConnection>
         <url>https://github.com/reactome/reactome-parent/tree/main/parents/reactome-pwp-parent</url>
     </scm>
-    <distributionManagement>
-        <!-- EBI repo -->
-        <repository>
-            <id>pst-release</id>
-            <name>EBI Nexus Repository</name>
-            <url>https://www.ebi.ac.uk/Tools/maven/repos/content/repositories/pst-release</url>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-        </repository>
-        <!-- EBI SNAPSHOT repo -->
-        <snapshotRepository>
-            <uniqueVersion>false</uniqueVersion>
-            <id>pst-snapshots</id>
-            <name>EBI Nexus Snapshots Repository</name>
-            <url>https://www.ebi.ac.uk/Tools/maven/repos/content/repositories/pst-snapshots</url>
-            <releases>
-                <enabled>false</enabled>
-            </releases>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-        </snapshotRepository>
-    </distributionManagement>
 
     <properties>
         <java.version>11</java.version>
