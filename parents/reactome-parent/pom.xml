@@ -173,7 +173,7 @@
 
         <!--disease-digester-->
         <mybatis-spring-boot-starter.version>2.2.2</mybatis-spring-boot-starter.version>
-        <hikari.version>5.0.1</hikari.version>
+        <hikari.version>7.1.0</hikari.version>
 
         <!--popular-pathways-->
         <json2flat.version>1.0.3</json2flat.version>
