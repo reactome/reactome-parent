@@ -106,7 +106,7 @@
         <activation.version>1.1.1</activation.version>
 
         <!--search indexer-->
-        <solr.version>9.0.0</solr.version>
+        <solr.version>10.1.0</solr.version>
         <mail.version>1.6.2</mail.version>
         <commons.compress.version>1.22</commons.compress.version>
 
