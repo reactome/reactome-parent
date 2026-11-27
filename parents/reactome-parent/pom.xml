@@ -101,7 +101,7 @@
         <batik.version>1.16</batik.version>
         <fop.version>2.8</fop.version>
         <commons.io.version>2.11.0</commons.io.version>
-        <itext.version>8.0.3</itext.version>
+        <itext.version>9.8.1</itext.version>
         <jaxb.version>2.3.0</jaxb.version>
         <activation.version>1.1.1</activation.version>
 
