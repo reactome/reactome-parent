@@ -1,33 +1,135 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.reactome.maven</groupId>
     <artifactId>bom-parent</artifactId>
-
+    <version>1.0.1</version>
     <packaging>pom</packaging>
-    <version>1.0.0</version>
+
     <name>Reactome BOM Parent</name>
+    <description>Reactome BOM aims to centralise dependencies management</description>
+    <url>https://github.com/reactome/reactome-parent</url>
+    <organization>
+        <name>Reactome</name>
+        <url>https://reactome.org/</url>
+    </organization>
+    <licenses>
+        <license>
+            <name>The Apache Software License, Version 2.0</name>
+            <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <id>adamjohnwright</id>
+            <name>Adam Wright</name>
+            <email>awright@oicr.on.ca</email>
+            <organization>Ontario Institute for Cancer Research</organization>
+            <organizationUrl>https://oicr.on.ca/</organizationUrl>
+        </developer>
+        <developer>
+            <id>jweiser</id>
+            <name>Joel Weiser</name>
+            <email>jweiser@oicr.on.ca</email>
+            <organization>Ontario Institute for Cancer Research</organization>
+            <organizationUrl>https://oicr.on.ca/</organizationUrl>
+        </developer>
+        <developer>
+            <id>eragueneau</id>
+            <name>Eliot Ragueneau</name>
+            <organization>The European Bioinformatics Institute</organization>
+            <organizationUrl>https://www.ebi.ac.uk/</organizationUrl>
+            <roles>
+                <role>alumni</role>
+            </roles>
+        </developer>
+        <developer>
+            <id>cqgong</id>
+            <name>Chuqiao Gong</name>
+            <organization>The European Bioinformatics Institute</organization>
+            <organizationUrl>https://www.ebi.ac.uk/</organizationUrl>
+            <roles>
+                <role>alumni</role>
+            </roles>
+        </developer>
+    </developers>
 
     <modules>
         <module>reactome-bom</module>
-        <module>reactome-pwp-bom</module>
     </modules>
 
-    <distributionManagement>
-        <!-- EBI repo -->
-        <repository>
-            <id>pst-release</id>
-            <name>EBI Nexus Repository</name>
-            <url>https://www.ebi.ac.uk/Tools/maven/repos/content/repositories/pst-release</url>
-        </repository>
-        <!-- EBI SNAPSHOT repo -->
-        <snapshotRepository>
-            <uniqueVersion>false</uniqueVersion>
-            <id>pst-snapshots</id>
-            <name>EBI Nexus Snapshots Repository</name>
-            <url>https://www.ebi.ac.uk/Tools/maven/repos/content/repositories/pst-snapshots</url>
-        </snapshotRepository>
-    </distributionManagement>
+    <scm>
+        <connection>scm:git:https://github.com/reactome/reactome-parent.git</connection>
+        <developerConnection>scm:git:ssh://git@github.com/reactome/reactome-parent.git</developerConnection>
+        <url>https://github.com/reactome/reactome-parent/tree/main/boms/</url>
+    </scm>
 
+    <properties>
+        <maven.gpg.version>3.2.8</maven.gpg.version>
+        <maven.tidy.version>1.4.0</maven.tidy.version>
+    </properties>
+
+    <build>
+        <plugins>
+            <!-- Signs deployed jar, source jar, and JavaDoc jar with GPG -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-gpg-plugin</artifactId>
+                <version>${maven.gpg.version}</version>
+                <executions>
+                    <execution>
+                        <id>sign-artifacts</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>sign</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!-- Standardizes layout of pom.xml file -->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>tidy-maven-plugin</artifactId>
+                <version>${maven.tidy.version}</version>
+                <executions>
+                    <execution>
+                        <id>validate</id>
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+    <!-- profile to deploy to Sonatype; invoked by "mvn deploy -Dsonatype-deploy=true" -->
+    <profiles>
+        <profile>
+            <id>sonatype-deploy</id>
+            <activation>
+                <property>
+                    <name>sonatype-deploy</name>
+                    <value>true</value>
+                </property>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.sonatype.central</groupId>
+                        <artifactId>central-publishing-maven-plugin</artifactId>
+                        <version>0.9.0</version>
+                        <extensions>true</extensions>
+                        <configuration>
+                            <publishingServerId>central</publishingServerId>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 </project>
