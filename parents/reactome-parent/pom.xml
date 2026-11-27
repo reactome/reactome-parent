@@ -139,7 +139,7 @@
         <javax.servlet.version>4.0.1</javax.servlet.version>
         <httpclient.verison>4.5.13</httpclient.verison>
         <httpmime.version>4.5.13</httpmime.version>
-        <slf4j.api.version>1.7.36</slf4j.api.version> <!--Do not update slf4j to prevent no log output-->
+        <slf4j.api.version>2.0.20</slf4j.api.version> <!--Do not update slf4j to prevent no log output-->
 
         <!--analysis core-->
         <jsoup.version>1.14.3</jsoup.version>
