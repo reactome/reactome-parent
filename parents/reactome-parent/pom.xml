@@ -10,7 +10,7 @@
 
     <groupId>org.reactome.maven</groupId>
     <artifactId>reactome-parent</artifactId>
-    <version>1.0.7</version>
+    <version>1.0.8</version>
     <packaging>pom</packaging>
 
     <name>Reactome Parent</name>
@@ -889,6 +889,11 @@
                         <extensions>true</extensions>
                         <configuration>
                             <publishingServerId>central</publishingServerId>
+                            <!-- Published as soon as Central validates the upload; the deploy waits until it is
+                                 live, so a release that fails to publish fails its job. -->
+                            <autoPublish>true</autoPublish>
+                            <waitUntil>published</waitUntil>
+                            <waitMaxTime>3600</waitMaxTime>
                         </configuration>
                     </plugin>
                 </plugins>

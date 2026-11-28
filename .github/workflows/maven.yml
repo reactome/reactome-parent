@@ -1,11 +1,11 @@
 name: reactome-parent
 
 # Every POM built on each pull request and push, unsigned. On a version tag (v*), signed and
-# uploaded to Maven Central through Sonatype's Central Portal, where the upload waits until a
-# person publishes it there (central-publishing-maven-plugin's autoPublish, off by default).
+# uploaded to Maven Central through Sonatype's Central Portal, and published as soon as Central
+# validates it (autoPublish, set in the POMs, so libraries using reactome-parent do the same).
 # The publish job runs in the `maven-central` environment, so GitHub asks a person to approve
-# it, and the Sonatype token and the signing key are that environment's secrets, never on
-# anyone's machine.
+# it before anything is uploaded, and the Sonatype token and the signing key are that
+# environment's secrets, never on anyone's machine.
 
 on:
     pull_request:
@@ -52,6 +52,13 @@ jobs:
                   EOF
                   mvn -B -ntp -q help:effective-pom -Doutput="$RUNNER_TEMP/child/effective.xml" -f "$RUNNER_TEMP/child/pom.xml"
                   ! grep -nE '<version>[^<]*\$\{' "$RUNNER_TEMP/child/effective.xml"
+            # A library using reactome-parent publishes its release once Central validates it, and
+            # its deploy waits until the release is live, so one that fails to publish fails.
+            - name: A child of reactome-parent publishes itself, and waits until it is live
+              run: |
+                  mvn -B -ntp -q -Dsonatype-deploy=true help:effective-pom -Doutput="$RUNNER_TEMP/child/deploy.xml" -f "$RUNNER_TEMP/child/pom.xml"
+                  grep -q '<autoPublish>true</autoPublish>' "$RUNNER_TEMP/child/deploy.xml"
+                  grep -q '<waitUntil>published</waitUntil>' "$RUNNER_TEMP/child/deploy.xml"
             # reactome-parent imports the reactome-bom this repository publishes with it.
             - name: reactome-parent imports this reactome-bom's version
               run: |

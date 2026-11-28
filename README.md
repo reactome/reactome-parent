@@ -37,10 +37,12 @@ We differentiate pwp from usual reactome as we do not want to have spring-boot-p
 Pushing a tag `v<reactome-parent's version>` on `main` signs and uploads reactome-parent to
 Maven Central's Central Portal, with bom-parent and reactome-bom when their versions are not on
 Central yet (Central refuses a version it already has), once a maintainer approves the
-`maven-central` environment. With a BOM, the upload arrives as two deployments (the BOMs, then
-the parent); publish both, the BOMs first. A release that changes reactome-bom gives it a new
-version, and reactome-parent imports that version (CI checks they agree). Nothing is published until someone presses
-Publish in the Portal, and nothing published can be changed or removed.
+`maven-central` environment. Each upload is published as soon as Central validates it, and the
+job waits until it is live: the BOMs first, then the parent, so the parent never reaches Central
+before the BOM it imports. A library using reactome-parent publishes in the same way. A release
+that changes reactome-bom gives it a new version, and reactome-parent imports that version (CI
+checks they agree). The environment's approval is the last point to stop a release: nothing
+published can be changed or removed.
 
 ## Strict builds
 
